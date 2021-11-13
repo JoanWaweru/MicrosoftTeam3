@@ -1,21 +1,22 @@
+<<<<<<< HEAD
   
 <<<<<<< HEAD
 =======
+=======
+@extends('layouts.app')
+
+@section('content')
+>>>>>>> cefebf2c99bd337f86448d0d6376ccd02e06ad5b
 
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
-<<<<<<< HEAD
-                <div class="card-body">
-=======
                 <div class="card-body" style="background-image: url('assets/images/category-2.jpg');">
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -61,11 +62,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-<<<<<<< HEAD
-                                <button type="submit" class="btn btn-primary">
-=======
                                 <button type="submit" class="btn btn-raised btn-primary" style="background-color: green; border-color: green; z-index: 2;">
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
                                     {{ __('Login') }}
                                 </button>
 
@@ -82,8 +79,4 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05

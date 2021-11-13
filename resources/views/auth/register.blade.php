@@ -1,28 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-=======
 
 <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
 
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-<<<<<<< HEAD
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-=======
             
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body" style="background-image: url('assets/images/category-2.jpg');">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
                         @csrf
 
                         <div class="form-group row">
@@ -38,11 +28,6 @@
                                 @enderror
                             </div>
                         </div>
-<<<<<<< HEAD
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-=======
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
 
@@ -73,7 +58,6 @@
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
@@ -108,11 +92,6 @@
                             </div>
                         </div>
 
-<<<<<<< HEAD
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-=======
                         <div class="form-group row">
                             <label for="profile_photo" class="col-md-4 col-form-label text-md-right">{{ __('Upload profile') }}</label>
 
@@ -126,7 +105,6 @@
 
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-raised btn-primary" style="background-color: green; border-color: green; z-index: 2;">
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -137,8 +115,4 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 @endsection
-=======
-@endsection
->>>>>>> 7bc74caf57fb017779722aac6f9d601d2f614b05
