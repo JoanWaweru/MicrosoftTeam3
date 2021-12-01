@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Bustani</title>
+    <title>Microsoft</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  
 
 
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel="stylesheet">   
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel="stylesheet">
     <link rel="stylesheet" href="{{ asset("assets/css/open-iconic-bootstrap.min.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/animate.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/owl.carousel.min.css") }}">
@@ -20,12 +19,12 @@
     <link rel="stylesheet" href="{{ asset("assets/css/flaticon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
     <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-   
+
     <link href="{{ asset('css/user.css') }}" rel="stylesheet" type="text/css">
   </head>
 
   <body>
-      @include("partials.nav");
+      @include("partials.nav")
 
       @yield('content')
 
