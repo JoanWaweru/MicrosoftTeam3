@@ -29,10 +29,10 @@ class PermissionsSeeder extends Seeder
         $admin = Role::create(['name' => 'admin']);
         $admin->givePermissionTo('edit','delete','read');
 
-        $client = Role::create(['name' => 'patient']);
+        $patient = Role::create(['name' => 'patient']);
 
-        $seller = Role::create(['name' => 'doctor']);
-        $seller->givePermissionTo('create product','edit','delete');
+        $doctor = Role::create(['name' => 'doctor']);
+        $doctor->givePermissionTo('add user','edit','delete');
         // gets all permissions via Gate::before rule; see AuthServiceProvider
 
         // create demo users
