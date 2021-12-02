@@ -130,6 +130,7 @@
                     <header class="mb-4"><h1 class="tm-text-shadow">Microsoft Team 3</h1></header>
                     <p class="mb-5 tm-font-big">Welcome to our application.</p>
                     <a href="{{route('myprofile')}}" class="btn tm-btn tm-font-big">My Profile</a>
+                    <a href="{{route('logout')}}" class="btn tm-btn tm-font-big">Log Out</a>
                     <!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
                 </div>
             </section>

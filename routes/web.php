@@ -37,14 +37,14 @@ Route::get('/registered_patients', function () {
     return view('registered_patients');
 });
 
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin_landing', [App\Http\Controllers\AdminController::class, 'index'])->name('admin_landing');
 //Auth::routes();
 
 Route::get('/myprofile', [App\Http\Controllers\UserController::class, 'show'])->name('myprofile');
-Route::get('/myprofileUpdate', [App\Http\Controllers\UserController::class, 'update'])->name('myprofileUpdate');
+Route::get('/myprofileUpdate', [App\Http\Controllers\UserController::class, 'edit'])->name('myprofileUpdate');
 
 
 //Route::resource('/myprofile', \App\Http\Controllers\UserController::class);
@@ -55,4 +55,8 @@ Route::get('/about', function () {
 
 Route::get('/contact-us', function () {
     return view('contact');
+});
+
+Route::get('/logout', function () {
+    return view('layouts.app');
 });
