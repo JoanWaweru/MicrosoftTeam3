@@ -42,7 +42,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="/admin_landing" class="nav-link">Home</a>
       </li>
     </ul>
 
@@ -211,21 +211,27 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Doctors
+                Staff
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+            <li class="nav-item">
+                <a href="/add_staff" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>View Registered Doctors</p>
+                  <p>Add Staff Members</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/registered_staff" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Edit/Disable Doctors</p>
+                  <p>View Registered Staff</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="/roles" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Edit/Disable Staff</p>
                 </a>
               </li>
               
@@ -235,15 +241,15 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
-                More data
+                Patients
                 <i class="fas fa-angle-left right"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="/registered_patients" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>xxxxx</p>
+                  <p>View Registered Patients</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -260,7 +266,7 @@
               </li>
             </ul>
           </li>
-          <li class="nav-header">EXAMPLES</li>
+          <li class="nav-header">EMAIL</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-envelope"></i>
