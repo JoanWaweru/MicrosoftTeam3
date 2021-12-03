@@ -22,19 +22,19 @@ Route::get('/', function () {
 });
 
 Route::get('/registered_staff', function () {
-    return view('registered_staff');
+    return view('admin/registered_staff');
 });
 
 Route::get('/roles', function () {
-    return view('roles');
+    return view('admin/roles');
 });
 
 Route::get('/add_staff', function () {
-    return view('add_staff');
+    return view('admin/add_staff');
 });
 
 Route::get('/registered_patients', function () {
-    return view('registered_patients');
+    return view('admin/registered_patients');
 });
 
 Route::get('/patients', function () {
