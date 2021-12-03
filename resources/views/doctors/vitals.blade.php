@@ -32,12 +32,64 @@
                         @csrf
                         </div>
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Patient ID') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="id" type="text" class="form-control @error('name') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Pulse Rate') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="pulse_rate" type="text" class="form-control @error('name') is-invalid @enderror" name="pulse_rate" value="{{ old('pulse_rate') }}" required autocomplete="pulse_rate">
+
+                                @error('pulse_rate')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Respiration Rate') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="respiration_rate" type="text" class="form-control @error('name') is-invalid @enderror" name="respiration_rate" value="{{ old('respiration_rate') }}" required autocomplete="respiration_rate">
+
+                                @error('respiration_rate')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Temperature') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="temperature" type="text" class="form-control @error('name') is-invalid @enderror" name="temperature" value="{{ old('temperature') }}" required autocomplete="name">
+
+                                @error('temperature')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -56,41 +108,12 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Weight') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="weight" type="text" class="form-control @error('name') is-invalid @enderror" name="weight" value="{{ old('name') }}"  >
-
-                                @error('weight')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Temperature') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="temperature" type="text" class="form-control @error('name') is-invalid @enderror" name="temperature" value="{{ old('name') }}" required autocomplete="name">
-
-                                @error('temperature')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
+                        </div>            
+                     <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Symptoms') }}</label>
 
                             <div class="col-md-6">
-                                <input id="symptoms" type="name" class="form-control @error('name') is-invalid @enderror" name="symptoms" required autocomplete="name">
+                                <input id="symptoms" type="name" class="form-control @error('name') is-invalid @enderror" name="symptoms" required autocomplete="symptoms">
 
                                 @error('symptoms')
                                     <span class="invalid-feedback" role="alert">

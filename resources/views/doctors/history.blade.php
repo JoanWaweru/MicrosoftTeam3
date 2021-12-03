@@ -25,10 +25,13 @@
       <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
                 <thead>
                 <tr>
-                  <th>Date Seen</th>
+                  <th>Patient ID</th>
+                  <th>Weight</th>
+                  <th>Height</th>
                   <th>Symptoms</th>
-                  <th>Risk</th>
+                  <th>Allergies</th>
                   <th>Diagnosis</th>
+                  <th>Emergency Contact</th>
                 </tr>
                 </thead>
                 <tbody>

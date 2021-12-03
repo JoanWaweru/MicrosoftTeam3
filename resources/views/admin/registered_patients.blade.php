@@ -25,6 +25,7 @@
       <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
                 <thead>
                 <tr>
+                  <th>Patient ID</th>
                   <th>Name</th>
                   <th >Phone Number</th>
                   <th >E-mail Address</th>
