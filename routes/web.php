@@ -37,10 +37,28 @@ Route::get('/registered_patients', function () {
     return view('registered_patients');
 });
 
+Route::get('/patients', function () {
+    return view('doctors/patients');
+});
+
+Route::get('/patients_waiting', function () {
+    return view('doctors/patients_waiting');
+});
+
+Route::get('/vitals', function () {
+    return view('doctors/vitals');
+});
+
+Route::get('/history', function () {
+    return view('doctors/history');
+});
+
+
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin_landing', [App\Http\Controllers\AdminController::class, 'index'])->name('admin_landing');
+Route::get('/doctor_landing', [App\Http\Controllers\DoctorController::class, 'index'])->name('doctor_landing');
 //Auth::routes();
 
 Route::get('/myprofile', [App\Http\Controllers\UserController::class, 'show'])->name('myprofile');
