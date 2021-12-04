@@ -24,10 +24,10 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            
+
                 <div class="card-header">{{ __('Vitals and Symptoms') }}</div>
 
-                <div class="card-body" style="background-image: url('assets/images/category-2.jpg');">
+                <div class="card-body" style="background-image: {{ asset("assets/images/category-2.jpg")}};">
                     <form method="POST" action="" enctype="multipart/form-data">
                         @csrf
                         </div>
@@ -108,7 +108,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>            
+                        </div>
                      <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Symptoms') }}</label>
 
@@ -134,7 +134,7 @@
                                 </button>
                             </div>
                         </div>
-                        
+
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Diagnosis') }}</label>
 
@@ -156,5 +156,5 @@
           <!-- ./col -->
       </div><!-- /.container-fluid -->
     </section>
-  
+
 @endsection
