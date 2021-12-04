@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDoctorResponseTable extends Migration
+class CreateEmergencyContactsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateDoctorResponseTable extends Migration
      */
     public function up()
     {
-        Schema::create('doctor_response', function (Blueprint $table) {
+        Schema::create('emergency_contacts', function (Blueprint $table) {
             $table->id();
-            $table->String('diagnosis');
-            $table->String('prescription');
-            $table->String('comment');
-            $table->foreignId('doctor_id')->references('id')->on('users');
+            $table->string('first_name');
+            $table->string('last_name');
+            $table->string('relationship');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateDoctorResponseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('doctor_response');
+        Schema::dropIfExists('emergency_contacts');
     }
 }

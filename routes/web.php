@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\UserController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,59 +24,44 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/registered_staff', function () {
-    return view('admin/registered_staff');
+//Admin Routes
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin_landing', [AdminController::class,'index']);
+    Route::get('/registered_staff', [AdminController::class,'registeredStaff']);
+    Route::get('/add_staff', [AdminController::class,'addStaff']);
+    Route::get('/roles', [AdminController::class,'roles']);
+    Route::get('/registered_patients', [AdminController::class,'registeredPatients']);
 });
 
-Route::get('/roles', function () {
-    return view('admin/roles');
+//Doctor Routes
+Route::middleware(['auth', 'role:doctor'])->group(function () {
+    Route::get('/doctor_landing', [DoctorController::class, 'index'])->name('doctor_landing');
+    Route::get('/patients', [DoctorController::class,'patients']);
+    Route::get('/patients_waiting', [DoctorController::class,'patientsWaiting']);
+    Route::get('/vitals', [DoctorController::class,'vitals']);
+    Route::get('/history', [DoctorController::class,'history']);
+    
 });
 
-Route::get('/add_staff', function () {
-    return view('admin/add_staff');
-});
-
-Route::get('/registered_patients', function () {
-    return view('admin/registered_patients');
-});
-
-Route::get('/patients', function () {
-    return view('doctors/patients');
-});
-
-Route::get('/patients_waiting', function () {
-    return view('doctors/patients_waiting');
-});
-
-Route::get('/vitals', function () {
-    return view('doctors/vitals');
-});
-
-Route::get('/history', function () {
-    return view('doctors/history');
+Route::middleware(['auth', 'role:patient'])->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/myprofile', [UserController::class, 'show'])->name('myprofile');
+    Route::get('/myprofileUpdate', [UserController::class, 'edit'])->name('myprofileUpdate');
 });
 
 
-//Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/admin_landing', [App\Http\Controllers\AdminController::class, 'index'])->name('admin_landing');
-Route::get('/doctor_landing', [App\Http\Controllers\DoctorController::class, 'index'])->name('doctor_landing');
-//Auth::routes();
-
-Route::get('/myprofile', [App\Http\Controllers\UserController::class, 'show'])->name('myprofile');
-Route::get('/myprofileUpdate', [App\Http\Controllers\UserController::class, 'edit'])->name('myprofileUpdate');
 
 
-//Route::resource('/myprofile', \App\Http\Controllers\UserController::class);
+//User Routes
 
-Route::get('/about', function () {
-    return view('about');
-});
 
-Route::get('/contact-us', function () {
-    return view('contact');
-});
+// Route::get('/about', function () {
+//     return view('about');
+// });
+
+// Route::get('/contact-us', function () {
+//     return view('contact');
+// });
 
 Route::get('/logout', function () {
     return view('layouts.app');
