@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\EmergencyContact;
+use App\Models\MedicalHistory;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -38,6 +39,15 @@ class UserController extends Controller
         return view('patient.show', compact('user'));
     }
 
+    public function showMedicalHistory(User $user)
+    {
+        $id=Auth::id();
+
+        $medicalHistory = MedicalHistory::where('patient_id','=',$id)->first();
+        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        return view('patient.show_medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -50,6 +60,15 @@ class UserController extends Controller
         return view('patient.edit', compact('user'));
     }
 
+    public function editMedicalHistory(User $user)
+    {
+        $id=Auth::id();
+
+        $medicalHistory = MedicalHistory::where('patient_id','=',$id)->first();
+        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        return view('patient.edit_medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
+    }
+    
     /**
      * Update the specified resource in storage.
      *
@@ -59,7 +78,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user=Auth::user();
+        $user=  User::find(Auth::id());
         $request->validate([
             'name'=>'required',
 
@@ -87,5 +106,57 @@ class UserController extends Controller
     {
         //
     }
+
+    public function updateMedicalHistory(Request $request){
+        $id= Auth::id();
+        $request->validate([
+            'height' => 'required',
+            'weight' => 'required'
+        ]);
+
+        $medicalHistory = MedicalHistory::where('patient_id',$id)->first();
+        $medicalHistory->weight= $request->weight;
+        $medicalHistory->height= $request->height;
+        $medicalHistory->medical_problems= $request->medical_problems;
+        $medicalHistory->allergies= $request->allergies;
+        $medicalHistory->update();
+
+        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        return view('patient.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact, 'succesMessage'=>"Medical History successfully updated"]);
+
+    }
+
+    public function updateEmergencyContact(Request $request){
+        $id= Auth::id();
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'relationship' => 'required',
+            'phonenumber' => 'required'
+        ]);
+
+        $medicalHistory = MedicalHistory::where('patient_id',$id)->first();
+        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        if($emergencyContact==null){
+            $emergencyContact= new EmergencyContact();
+            $emergencyContact->first_name =$request->first_name;
+            $emergencyContact->last_name =$request->last_name;
+            $emergencyContact->relationship =$request->relationship;
+            $emergencyContact->phone_number =$request->phonenumber;
+            $emergencyContact->save();
+            $medicalHistory->emergency_contact_id= $emergencyContact->id;
+            $medicalHistory->save();
+        }else{
+            $emergencyContact->first_name =$request->first_name;
+            $emergencyContact->last_name =$request->last_name;
+            $emergencyContact->relationship =$request->relationship;
+            $emergencyContact->phone_number =$request->phonenumber;
+            $emergencyContact->save();
+        }
+
+        return redirect('/medicalHistoryEdit')->with(['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact, 'succesMessageTwo'=>"Emergency Contact Updated successfully updated"]);
+
+    }
+    
 
 }
