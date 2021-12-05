@@ -29,7 +29,17 @@ class AdminController extends Controller
     public function registeredPatients()
     {
         return view('admin/registered_patients');
-    }    
+    }   
+    
+    public function admin_profile()
+    {
+        return view('admin/admin_profile');
+    }
+
+    public function view_profile()
+    {
+        return view('admin/view_profile');
+    }
 
 
 }
