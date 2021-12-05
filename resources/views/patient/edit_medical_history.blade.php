@@ -58,7 +58,7 @@
                                 <label for="medical_problems" class="col-md-4 col-form-label text-md-right">{{ __('Medical Problem') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="medical_problems" type="text" class="form-control @error('medical_problems') is-invalid @enderror" name="medical_problems" required>{{ $medicalProblems}} 
+                                    <textarea id="medical_problems" type="text" class="form-control @error('medical_problems') is-invalid @enderror" name="medical_problems" style="height:fit-content; overflow:hidden;" required>{{ $medicalProblems}} 
                                     </textarea>   
                                     @error('medical_problems')
                                     <span class="invalid-feedback" role="alert">
@@ -72,7 +72,7 @@
                                 <label for="allergies" class="col-md-4 col-form-label text-md-right">{{ __('Allergies') }}</label>
 
                                 <div class="col-md-6">
-                                    <textarea id="allergies" type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies" required >{{ $allergies }}
+                                    <textarea id="allergies" type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies" style="height:fit-content; overflow:hidden;" required >{{ $allergies }}
                                     </textarea>   
                                     @error('allergies')
                                     <span class="invalid-feedback" role="alert">
