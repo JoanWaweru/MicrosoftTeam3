@@ -47,7 +47,12 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/myprofile', [UserController::class, 'show'])->name('myprofile');
     Route::get('/myprofileUpdate', [UserController::class, 'edit'])->name('myprofileUpdate');
+    Route::get('/medicalHistory', [UserController::class, 'showMedicalHistory'])->name('medicalHistory');
+    Route::get('/medicalHistoryEdit', [UserController::class, 'editMedicalHistory'])->name('medicalHistoryEdit');
+    Route::post('/medicalHistoryUpdate', [UserController::class, 'updateMedicalHistory'])->name('medicalHistoryUpdate');
+    Route::post('/emergencyContactUpdate', [UserController::class, 'updateEmergencyContact'])->name('emergencyContactUpdate');
 });
+
 
 
 
