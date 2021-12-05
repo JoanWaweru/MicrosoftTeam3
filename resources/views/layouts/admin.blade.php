@@ -56,8 +56,8 @@
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">WELCOME</span>
           <div class="dropdown-divider"></div>
-          <a href="/admin_profile" class="dropdown-item">
-            Update Profile
+          <a href="/view_profile" class="dropdown-item">
+            View Profile
           </a>
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item">
