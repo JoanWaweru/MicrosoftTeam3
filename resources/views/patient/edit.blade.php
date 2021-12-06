@@ -1,5 +1,15 @@
 @extends('layouts.profile')
-
+@php
+    $name=$email=$phone_number=$profile_photo=$city="";
+    $user=Auth::user();
+    if ($user!=null) {
+        $name = $user->name;
+        $email = $user->email;
+        $phone_number = $user->phone_number;
+        $profile_photo = $user->profile_photo;
+        $city = $user->city;
+    }
+@endphp
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -8,8 +18,7 @@
                     <div class="card-header">{{ __('Update Profile') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action={{ route('myprofileUpdate', $user) }} enctype="multipart/form-data">
-                            @method('PATCH')
+                        <form method="POST" action={{route('myprofileUpdate',$user->id)}} enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group row">
@@ -82,6 +91,13 @@
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                                     <a href={{ route('myprofile')}} class="btn btn-primary" type="button" >Back to My Profile</a>                                </div>
+                            </div>
+                            <div class="success-message">
+                                @php
+                                    if(isset($succesMessage)){
+                                         echo $succesMessage;
+                                    }
+                                @endphp
                             </div>
                         </form>
                     </div>
