@@ -7,18 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset("assets/css/open-iconic-bootstrap.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/animate.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/owl.carousel.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/owl.theme.default.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/magnific-popup.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/aos.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/ionicons.min.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/bootstrap-datepicker.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/jquery.timepicker.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/flaticon.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/icomoon.css") }}">
-    <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
     <link href="{{ asset('css/user.css') }}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
     <link rel="stylesheet" href="{{asset('assets/assets2/css/fontawesome-all.min.css')}}">
@@ -27,7 +15,12 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/assets2/slick/slick.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/assets2/slick/slick-theme.css')}}"/>
     <link rel="stylesheet" href="{{asset('assets/assets2/css/tooplate-style.css')}}">
-    
+    <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
+    <script type="text/javascript" src="{{asset('assets/assets2/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="{{asset('assets/assets2/js/jquery.magnific-popup.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/assets2/js/jquery.backstretch.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/assets2/slick/slick.min.js')}}"></script> <!-- Slick Carousel -->
     <title>Constructive HTML Template</title>
     
       <script>
@@ -49,10 +42,6 @@
       @yield('content')
 
   </body>
-  <script type="text/javascript" src="{{asset('assets/assets2/js/jquery-3.2.1.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('assets/assets2/js/jquery.magnific-popup.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('assets/assets2/js/jquery.backstretch.min.js')}}"></script>
-  <script type="text/javascript" src="{{asset('assets/assets2/slick/slick.min.js')}}"></script> <!-- Slick Carousel -->
   
   <script>
   
@@ -223,20 +212,6 @@
       });
   
   </script>
-  <script src="{{ asset("assets/js/jquery.min.js") }}"></script>
-  <script src="{{ asset("assets/js/jquery-migrate-3.0.1.min.js") }}"></script>
-  <script src="{{ asset("assets/js/popper.min.js") }}"></script>
-  <script src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
-  <script src="{{ asset("assets/js/jquery.easing.1.3.js") }}"></script>
-  <script src="{{ asset("assets/js/jquery.waypoints.min.js") }}"></script>
-  <script src="{{ asset("assets/js/jquery.stellar.min.js") }}"></script>
-  <script src="{{ asset("assets/js/owl.carousel.min.js") }}"></script>
-  <script src="{{ asset("assets/js/jquery.magnific-popup.min.js") }}"></script>
-  <script src="{{ asset("assets/js/aos.js") }}"></script>
-  <script src="{{ asset("assets/js/jquery.animateNumber.min.js") }}"></script>
-  <script src="{{ asset("assets/js/bootstrap-datepicker.js") }}"></script>
-  <script src="{{ asset("assets/js/scrollax.min.js") }}"></script>
+  
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{{ asset("assets/js/google-map.js") }}"></script>
-  <script src="{{ asset("assets/js/main.js") }}"></script>
   </html>
