@@ -48,6 +48,8 @@ class UserController extends Controller
         return view('patient.show_medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
     }
 
+
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -156,6 +158,10 @@ class UserController extends Controller
 
         return redirect('/medicalHistoryEdit')->with(['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact, 'succesMessageTwo'=>"Emergency Contact Updated successfully updated"]);
 
+    }
+
+    public function trainFace(){
+        return view('patient.train_face');
     }
     
 
