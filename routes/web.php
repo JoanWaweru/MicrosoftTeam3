@@ -3,11 +3,8 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
-<<<<<<< HEAD
 use App\Http\Controllers\NurseController;
-=======
 use App\Http\Controllers\MedicalRecordController;
->>>>>>> 6c4014e1de9281fb4098123763a3c7d409642a2d
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
