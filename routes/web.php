@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NurseController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,11 +32,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/add_staff', [AdminController::class,'addStaff']);
     Route::get('/roles', [AdminController::class,'roles']);
     Route::get('/registered_patients', [AdminController::class,'registeredPatients']);
-<<<<<<< HEAD
-=======
     Route::get('/admin_profile', [AdminController::class,'admin_profile']);
     Route::get('/view_profile', [AdminController::class,'view_profile']);
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
 });
 
 //Doctor Routes
@@ -45,27 +43,35 @@ Route::middleware(['auth', 'role:doctor'])->group(function () {
     Route::get('/patients_waiting', [DoctorController::class,'patientsWaiting']);
     Route::get('/vitals', [DoctorController::class,'vitals']);
     Route::get('/history', [DoctorController::class,'history']);
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
 });
 
 Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/myprofile', [UserController::class, 'show'])->name('myprofile');
-<<<<<<< HEAD
-    Route::get('/myprofileUpdate', [UserController::class, 'edit'])->name('myprofileUpdate');
-=======
     Route::get('/myprofileEdit', [UserController::class, 'edit'])->name('myprofileEdit');
     Route::post('/myprofileUpdate/{id}', [UserController::class, 'update'])->name('myprofileUpdate');
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
     Route::get('/medicalHistory', [UserController::class, 'showMedicalHistory'])->name('medicalHistory');
     Route::get('/medicalHistoryEdit', [UserController::class, 'editMedicalHistory'])->name('medicalHistoryEdit');
     Route::post('/medicalHistoryUpdate', [UserController::class, 'updateMedicalHistory'])->name('medicalHistoryUpdate');
     Route::post('/emergencyContactUpdate', [UserController::class, 'updateEmergencyContact'])->name('emergencyContactUpdate');
 });
+
+//nurse routes
+Route::middleware([])->group(function () {
+   
+    Route::get('/nurse_landing', [NurseController::class, 'index'])->name('nurse_landing'); // done 
+    Route::put('/updateMedicalHistory', [NurseController::class, 'updateMedicalHistory'])->name('updateMedicalHistory'); // done
+    Route::get('/register_patient', [NurseController::class, 'store'])->name('register_patient');//done
+    Route::post('/updatePatientDetails', [NurseController::class, 'updatePatientsDetails'])->name('updatePatientDetails');// done
+   
+   /*not completed
+    Route::get('/vitals', [NurseController::class, 'vitals'])->name('vitals');
+    Route::get('/history', [NurseController::class, 'history'])->name('history');*/
+    
+});
+
+
 
 
 

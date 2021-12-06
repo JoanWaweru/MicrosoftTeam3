@@ -73,6 +73,7 @@ class UserController extends Controller
         $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
         return view('patient.edit_medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -166,5 +167,6 @@ class UserController extends Controller
         return redirect('/medicalHistoryEdit')->with(['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact, 'succesMessageTwo'=>"Emergency Contact Updated successfully updated"]);
 
     }
+
 
 }
