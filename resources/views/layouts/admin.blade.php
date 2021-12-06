@@ -48,6 +48,7 @@
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+<<<<<<< HEAD
       <!-- Navbar Search -->
       <li class="nav-item">
         <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -154,17 +155,37 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
+=======
+      <!-- Profile Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          Profile
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">WELCOME</span>
+          <div class="dropdown-divider"></div>
+          <a href="/view_profile" class="dropdown-item">
+            View Profile
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            Log Out
+          </a>
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
           <i class="fas fa-expand-arrows-alt"></i>
         </a>
       </li>
+<<<<<<< HEAD
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
           <i class="fas fa-th-large"></i>
         </a>
       </li>
+=======
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -186,6 +207,10 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
+<<<<<<< HEAD
+=======
+     
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
         </div>
       </div>
 

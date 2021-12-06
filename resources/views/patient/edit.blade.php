@@ -1,5 +1,19 @@
 @extends('layouts.profile')
+<<<<<<< HEAD
 
+=======
+@php
+    $name=$email=$phone_number=$profile_photo=$city="";
+    $user=Auth::user();
+    if ($user!=null) {
+        $name = $user->name;
+        $email = $user->email;
+        $phone_number = $user->phone_number;
+        $profile_photo = $user->profile_photo;
+        $city = $user->city;
+    }
+@endphp
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
@@ -8,8 +22,12 @@
                     <div class="card-header">{{ __('Update Profile') }}</div>
 
                     <div class="card-body">
+<<<<<<< HEAD
                         <form method="POST" action={{ route('myprofileUpdate', $user) }} enctype="multipart/form-data">
                             @method('PATCH')
+=======
+                        <form method="POST" action={{route('myprofileUpdate',$user->id)}} enctype="multipart/form-data">
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
                             @csrf
 
                             <div class="form-group row">
@@ -83,6 +101,16 @@
                                     <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                                     <a href={{ route('myprofile')}} class="btn btn-primary" type="button" >Back to My Profile</a>                                </div>
                             </div>
+<<<<<<< HEAD
+=======
+                            <div class="success-message">
+                                @php
+                                    if(isset($succesMessage)){
+                                         echo $succesMessage;
+                                    }
+                                @endphp
+                            </div>
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
                         </form>
                     </div>
                 </div>

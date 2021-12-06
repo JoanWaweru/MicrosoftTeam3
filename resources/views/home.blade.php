@@ -16,7 +16,11 @@
 
         <!-- Sidebar -->
         @include('patient.sidebar')
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
         <div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 tm-content">
 
             <!-- section 1 -->
@@ -26,7 +30,20 @@
                     <p class="mb-5 tm-font-big">Welcome to our application.</p>
                     <a href="{{route('myprofile')}}" class="btn tm-btn tm-font-big">My Profile</a>
                     <a href="{{route('medicalHistory')}}" class="btn tm-btn tm-font-big">Medical History</a>
+<<<<<<< HEAD
                     <a href="{{route('logout')}}" class="btn tm-btn tm-font-big">Log Out</a>
+=======
+{{--                    <a href="{{route('logout')}}" class="btn tm-btn tm-font-big">Log Out</a>--}}
+                    <a class="btn tm-btn tm-font-big" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+>>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
                     <!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
                 </div>
             </section>
