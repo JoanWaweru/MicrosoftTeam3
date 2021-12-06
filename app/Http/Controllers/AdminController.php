@@ -29,9 +29,6 @@ class AdminController extends Controller
     public function registeredPatients()
     {
         return view('admin/registered_patients');
-<<<<<<< HEAD
-    }    
-=======
     }   
     
     public function admin_profile()
@@ -43,7 +40,6 @@ class AdminController extends Controller
     {
         return view('admin/view_profile');
     }
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
 
 
 }

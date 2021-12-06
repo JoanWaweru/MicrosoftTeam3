@@ -52,14 +52,6 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Models\User  $user
-<<<<<<< HEAD
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        $user=Auth::user();
-        return view('patient.edit', compact('user'));
-=======
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function edit(User $user)
@@ -71,7 +63,6 @@ class UserController extends Controller
 
         $user = User::where('id','=',$id)->first();
         return view('patient.edit',['user'=>$user]);
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
     }
 
     public function editMedicalHistory(User $user)
@@ -82,29 +73,11 @@ class UserController extends Controller
         $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
         return view('patient.edit_medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
     }
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Models\User  $user
-<<<<<<< HEAD
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, User $user)
-    {
-        $user=  User::find(Auth::id());
-        $request->validate([
-            'name'=>'required',
-
-            'email'=>'required'
-        ]);
-
-=======
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -119,18 +92,10 @@ class UserController extends Controller
             'city'=>'required'
         ]);
 //        $user = User::where('id',$id)->first();
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
 
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
         $user->phone_number = $request->get('phone_number');
-<<<<<<< HEAD
-        $user->city = $request->get('city');
-
-        $user->update();
-
-        return redirect('/myprofile')->with('success', 'Contact updated!');
-=======
         $user->profile_photo = $request->get('profile_photo');
         $user->city = $request->get('city');
         $user->update();
@@ -138,7 +103,6 @@ class UserController extends Controller
         return redirect('/myprofile')->with('success', 'Profile has been updated!');
 //        return view('patient.edit')->with('success', 'Profile has been updated!');
 //        return view('patient.show', ['user'=>$user, 'successMessage'=>"Profile successfully updated"]);
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
     }
 
     /**
@@ -202,10 +166,5 @@ class UserController extends Controller
         return redirect('/medicalHistoryEdit')->with(['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact, 'succesMessageTwo'=>"Emergency Contact Updated successfully updated"]);
 
     }
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 2ce49e4adfe3a4e90f05cf7547cf80feb034c125
 
 }
