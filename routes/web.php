@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NurseController;
 use App\Http\Controllers\MedicalRecordController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Auth;
@@ -62,6 +63,22 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
 
     Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
 });
+
+//nurse routes
+Route::middleware([])->group(function () {
+   
+    Route::get('/nurse_landing', [NurseController::class, 'index'])->name('nurse_landing'); // done 
+    Route::put('/updateMedicalHistory', [NurseController::class, 'updateMedicalHistory'])->name('updateMedicalHistory'); // done
+    Route::get('/register_patient', [NurseController::class, 'store'])->name('register_patient');//done
+    Route::post('/updatePatientDetails', [NurseController::class, 'updatePatientsDetails'])->name('updatePatientDetails');// done
+   
+   /*not completed
+    Route::get('/vitals', [NurseController::class, 'vitals'])->name('vitals');
+    Route::get('/history', [NurseController::class, 'history'])->name('history');*/
+    
+});
+
+
 
 
 
