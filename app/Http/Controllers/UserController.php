@@ -96,16 +96,23 @@ class UserController extends Controller
         ]);
 //        $user = User::where('id',$id)->first();
 
+        //storing Image in the public directory
+        $photo= $request->file('profile_photo');
+        $user_id = Auth::id();
+        if($photo){
+            $imageExtension = $photo->extension();
+            $photoName = "profile_image".$user_id.'.'.$imageExtension;
+            $path=$photo->storeAs('profilePhotos',$photoName,'public');
+            $user->profile_photo = $photoName;
+        }
+
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
         $user->phone_number = $request->get('phone_number');
-        $user->profile_photo = $request->get('profile_photo');
         $user->city = $request->get('city');
         $user->update();
 
         return redirect('/myprofile')->with('success', 'Profile has been updated!');
-//        return view('patient.edit')->with('success', 'Profile has been updated!');
-//        return view('patient.show', ['user'=>$user, 'successMessage'=>"Profile successfully updated"]);
     }
 
     /**

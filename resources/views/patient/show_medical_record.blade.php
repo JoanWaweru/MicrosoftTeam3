@@ -28,7 +28,7 @@
                 $prescription= $doctorResponse->prescription;
                 $comment= $doctorResponse->comment;
             }
-            $link= storage_path().'/medicalRecordPhotos/'.$medicalRecord->condition_image_path;
+            $link= asset('storage/medicalRecordPhotos/'.$medicalRecord->condition_image_path);
         @endphp
         <tr>
             <td>{{date('M j Y', strtotime($medicalRecord->created_at))}}</td>
