@@ -82,5 +82,16 @@ class PermissionsSeeder extends Seeder
             'phone_number' => '+2547123456788',
         ]);
         $user->assignRole($nurse);
+
+        $user = \App\Models\User::factory()->create([
+
+            'name' => 'Joan Waweru',
+
+            'email' => 'joan.waweru@strathmore.edu',
+            'password' => bcrypt('12345678'),
+            'city' => 'Nairobi',
+            'phone_number' => '+254740182052',
+        ]);
+        $user->assignRole($patient);
     }
 }

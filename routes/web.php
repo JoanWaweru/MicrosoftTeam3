@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 //Admin Routes
@@ -66,16 +66,16 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
 
 //nurse routes
 Route::middleware([])->group(function () {
-   
-    Route::get('/nurse_landing', [NurseController::class, 'index'])->name('nurse_landing'); // done 
+
+    Route::get('/nurse_landing', [NurseController::class, 'index'])->name('nurse_landing'); // done
     Route::put('/updateMedicalHistory', [NurseController::class, 'updateMedicalHistory'])->name('updateMedicalHistory'); // done
     Route::get('/register_patient', [NurseController::class, 'store'])->name('register_patient');//done
     Route::post('/updatePatientDetails', [NurseController::class, 'updatePatientsDetails'])->name('updatePatientDetails');// done
-   
+
    /*not completed
     Route::get('/vitals', [NurseController::class, 'vitals'])->name('vitals');
     Route::get('/history', [NurseController::class, 'history'])->name('history');*/
-    
+
 });
 
 
