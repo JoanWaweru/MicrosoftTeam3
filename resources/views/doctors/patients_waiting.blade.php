@@ -21,28 +21,42 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      
-      <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
-                <thead>
-                <tr>
-                  <th>Patient ID</th>
-                  <th>Name</th>
-                  <th>Phone Number</th>
-                  <th>E-mail Address</th>
-                  <th>City</th>
-                  <th>Date of Birth</th>
-                  <th>Vitals & Symptoms</th> 
-                </tr>
-                </thead>
-                <tbody>
-                    <?php
-                        //thinking 'vitals & symptoms' should be a button that goes to vitals.blade.php
-                    ?>
-                </tbody>
-                </table>
+        <table id="patient_table" class="display" >
+          <thead>
+              <tr>
 
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>E-mail Address</th>
+                <th>City</th>
+                <th>Date of Birth</th>
+                <th>Medical History</th>
+                <th>Medical Record</th>
+              </tr>
+          </thead>
+          <tbody>
+            @foreach ($waitingPatients as $patient)
+            @php
+              $medicalRecordUrl= "/showMedicalRecord/{$patient->id}";
+              $medicalHistoryUrl= "/showMedicalHistory/{$patient->id}";
+            @endphp
+            <tr>
+              <td>{{$patient->name}}</td>
+              <td>{{$patient->phone_number}}</td>
+              <td>{{$patient->email}}</td>
+              <td>{{$patient->city}}</td>
+              <td>{{$patient->date_of_birth}}</td>
+              <td><a href="{{url($medicalHistoryUrl)}}">Medical History</a></td>
+              <td><a href="{{url($medicalRecordUrl)}}">Medical Record</a></td>
+            </tr>
+            @endforeach
+            
+          </tbody>
+      </table>
+      
+     
           <!-- ./col -->
       </div><!-- /.container-fluid -->
     </section>
-  
+    <script src="{{asset('js/doctor/patients.js')}}"></script>
 @endsection
