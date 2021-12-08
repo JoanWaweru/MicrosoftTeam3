@@ -1,0 +1,73 @@
+.container-box{
+    display: block;
+    width: 70%;
+    margin: 15px auto;
+    padding-bottom: 10px;
+    background: #e0dada;
+    border-radius: 15px;
+}
+.list{
+    display: flex;
+    width: 70%;
+    margin: 5px auto;
+    border: none;
+    border-bottom: 1px solid rgb(73, 72, 72);
+}
+
+.list p.key{
+    flex: 50%;
+}
+.list p.value{
+    flex: 50%;
+    margin-left: 3vw;
+}
+
+.button-box{
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    margin: 10px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #e0dada;
+}
+
+.button-box a{
+    margin-left: 10px;
+}
+
+.success-message{
+    text-align: center;
+    margin: 15px auto;
+    color: rgb(59, 192, 59);
+
+}
+
+
+table{
+    border: 1px solid rgb(104, 99, 99);
+}
+table#example{
+    margin-top: 20px;
+    width: 100%;
+}
+#small-box{
+    margin-top: 20px;
+    font-size: 15px;
+    padding: 10px;
+}
+th,td,tr{
+    border: 1px solid rgb(104, 99, 99);
+}
+
+.button_box{
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    margin: 10px auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.button_box a{
+    margin: 10px;
+}

@@ -92,7 +92,8 @@ class UserController extends Controller
             'email'=>'required',
             'phone_number'=>'required',
             'profile_photo'=>'required',
-            'city'=>'required'
+            'city'=>'required',
+            'date_of_birth'=>'required'
         ]);
 //        $user = User::where('id',$id)->first();
 
@@ -108,6 +109,7 @@ class UserController extends Controller
 
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
+        $user->date_of_birth = $request->get('date_of_birth');
         $user->phone_number = $request->get('phone_number');
         $user->city = $request->get('city');
         $user->update();
@@ -136,6 +138,7 @@ class UserController extends Controller
         $medicalHistory = MedicalHistory::where('patient_id',$id)->first();
         $medicalHistory->weight= $request->weight;
         $medicalHistory->height= $request->height;
+        $medicalHistory->medication= $request->medication;
         $medicalHistory->medical_problems= $request->medical_problems;
         $medicalHistory->allergies= $request->allergies;
         $medicalHistory->update();
