@@ -60,9 +60,15 @@
             View Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            Log Out
-          </a>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                {{ __('Log Out') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -90,7 +96,7 @@
         </div>
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
-     
+
         </div>
       </div>
 
@@ -139,7 +145,7 @@
                   <p>Edit/Disable Staff</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
