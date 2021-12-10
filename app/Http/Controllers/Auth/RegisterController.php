@@ -30,6 +30,8 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectToAdmin = RouteServiceProvider::ADMINHOME;
+
 
     /**
      * Create a new controller instance.
@@ -69,6 +71,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
             'city' => $data['city'],
+            'role' => $data['role'],
             'profile_photo' => $data['profile_photo'],
             'password' => Hash::make($data['password']),
         ]);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NurseController;
@@ -35,6 +36,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/registered_patients', [AdminController::class,'registeredPatients']);
     Route::get('/admin_profile', [AdminController::class,'admin_profile']);
     Route::get('/view_profile', [AdminController::class,'view_profile']);
+    Route::resource('users',\App\Http\Controllers\UserAdminController::class);
 });
 
 //Doctor Routes

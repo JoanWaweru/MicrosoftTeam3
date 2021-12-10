@@ -46,6 +46,7 @@ class PermissionsSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => bcrypt('12345678'),
             'city' => 'Lost city',
+            'role' => 'Admin',
             'phone_number' => '+2547123456788',
         ]);
         $user->assignRole($admin);
@@ -56,6 +57,7 @@ class PermissionsSeeder extends Seeder
             'email' => 'patient@example.com',
             'password' => bcrypt('12345678'),
             'city' => 'Lost city',
+            'role' => 'Patient',
             'phone_number' => '+2547123456788',
 
         ]);
@@ -67,6 +69,7 @@ class PermissionsSeeder extends Seeder
             'email' => 'doctor@example.com',
             'password' => bcrypt('12345678'),
             'city' => 'Found city',
+            'role' => 'Doctor',
             'phone_number' => '+2547123456788',
 
         ]);
@@ -79,6 +82,7 @@ class PermissionsSeeder extends Seeder
             'email' => 'nurse@example.com',
             'password' => bcrypt('12345678'),
             'city' => 'Nurse city',
+            'role' => 'Nurse',
             'phone_number' => '+2547123456788',
         ]);
         $user->assignRole($nurse);
@@ -90,6 +94,7 @@ class PermissionsSeeder extends Seeder
             'email' => 'joan.waweru@strathmore.edu',
             'password' => bcrypt('12345678'),
             'city' => 'Nairobi',
+            'role' => 'Patient',
             'phone_number' => '+254740182052',
         ]);
         $user->assignRole($patient);

@@ -34,8 +34,18 @@ class LoginController extends Controller
         }elseif(Auth::user()->hasAnyRole( 'doctor')){
             return 'doctor_landing';
         }
-        
+
         return RouteServiceProvider::HOME;
+
+
+    }
+
+    protected function redirectToAdmin(){
+        if(Auth::user()->hasAnyRole( 'admin')){
+            return 'admin_landing';
+        }
+
+        return RouteServiceProvider::ADMINHOME;
 
 
     }

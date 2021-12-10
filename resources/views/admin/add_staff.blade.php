@@ -24,25 +24,25 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            
+
                 <div class="card-header">{{ __('Add Staff Member') }}</div>
 
                 <div class="card-body" style="background-image: url('assets/images/category-2.jpg');">
                     <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ID') }}</label>
+{{--                        <div class="form-group row">--}}
+{{--                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('ID') }}</label>--}}
 
-                            <div class="col-md-6">
-                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>
+{{--                            <div class="col-md-6">--}}
+{{--                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value="{{ old('id') }}" required autocomplete="id" autofocus>--}}
 
-                                @error('id')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+{{--                                @error('id')--}}
+{{--                                    <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ $message }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                @enderror--}}
+{{--                            </div>--}}
                         </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
@@ -61,7 +61,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role">
+                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="name" autofocus>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value=" "  >
+                                <input id="phone_number" type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value=" "  >
 
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
@@ -129,7 +129,7 @@
                             </div>
                         </div>
 
-                        
+
                         <div class="form-group row mb-0">
 
                             <div class="col-md-6 offset-md-4">
@@ -143,8 +143,8 @@
             </div>
         </div>
     </div>
-       
-           
+
+
       </div><!-- /.container-fluid -->
     </section>
 @endsection
