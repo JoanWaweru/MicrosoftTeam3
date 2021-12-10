@@ -31,7 +31,7 @@
                     <?php 
 
                     ?>
-                <img src=" " class="img-fluid" style="height: 500px"alt="error">
+                <img src=" {{asset("storage/profilePhotos/".Auth::user()->profile_photo)}}" class="img-fluid" style="height: 500px"alt="error">
                 </div>
                     <div class="col-lg-7 px-5 pt-5">
                       <h4>User Profile</h4>
@@ -39,21 +39,28 @@
                       <div class="form-row">
                               <div class="col-lg-7">
                                   <label>ID</label>
-                                  <h6 id="id" name ="id" type="text" placeholder="ID" class=""></h6>
+                                  <h6 id="id" name ="id" type="text" placeholder="ID" class="">{{ $user->id }}</h6>
                               </div>
                           </div>
                           <br>
                           <div class="form-row">
                               <div class="col-lg-7">
                               <label>Name</label>
-                                  <h6 type="text" id="name" name="name" placeholder="Name" value="" class="" ></h6>
+                                  <h6 type="text" id="name" name="name" placeholder="Name" value="" class="" >{{ $user->name }}</h6>
+                              </div>
+                          </div>
+                          <br>
+                          <div class="form-row">
+                              <div class="col-lg-7">
+                              <label>Phone Number</label>
+                                  <h6 type="text" id="phone_number" name="phone_number" placeholder="Phone Number" value="" class="" >{{ $user->phone_number }}</h6>
                               </div>
                           </div>
                           <br>
                           <div class="form-row">
                               <div class="col-lg-7">
                               <label>Email</label>
-                                  <h6 id="email" type="email" name="email" placeholder="Email Address" value="" class=""></h6>
+                                  <h6 id="email" type="email" name="email" placeholder="Email Address" value="" class="">{{ $user->email }}</h6>
                               </div>
                           </div>
                           <br>
@@ -61,10 +68,6 @@
                               <div class="col-lg-7">
                               <a href="/admin_profile" class="btn btn-primary ">Update Profile</a>
                               
-                            </div><br>
-                            <div class="form-row">
-                              <div class="col-lg-7">
-                              <a href="#" class="btn btn-primary ">Back</a>
                             </div>
                           </div>
                           <br>

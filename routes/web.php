@@ -35,6 +35,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/registered_patients', [AdminController::class,'registeredPatients']);
     Route::get('/admin_profile', [AdminController::class,'admin_profile']);
     Route::get('/view_profile', [AdminController::class,'view_profile']);
+    Route::post('/updateAdmin/{id}', [AdminController::class, 'updateAdmin'])->name('updateAdmin');
 });
 
 //Doctor Routes
