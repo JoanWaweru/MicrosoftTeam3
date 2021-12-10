@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('css')
+<link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -17,12 +20,10 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      
-      <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
+      <table id="registered_patients" class="table table-secondary table-bordered" >
                 <thead>
                 <tr>
                   <th>Patient ID</th>
@@ -32,14 +33,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php
-
-                    ?>
+                @foreach ($patients as $patient)
+            <tr>
+              <td>{{$patient->id}}</td>
+              <td>{{$patient->name}}</td>
+              <td>{{$patient->phone_number}}</td>
+              <td>{{$patient->email}}</td>
+            </tr>
+            @endforeach
                 </tbody>
-                </table>
+            </table>
 
           <!-- ./col -->
       </div><!-- /.container-fluid -->
     </section>
-  
+ 
 @endsection
+
+@push('scripts')
+<script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+  $(document).ready( function () {
+    $('#registered_patients').DataTable();
+  } );
+  </script>
+@endpush
