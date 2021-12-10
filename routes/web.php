@@ -44,6 +44,12 @@ Route::middleware(['auth', 'role:doctor'])->group(function () {
     Route::get('/doctor_landing', [DoctorController::class, 'index'])->name('doctor_landing');
     Route::get('/patients', [DoctorController::class,'patients']);
     Route::get('/patients_waiting', [DoctorController::class,'patientsWaiting']);
+    Route::get('/showMedicalRecord/{id}',[DoctorController::class,'medicalRecord']);
+    Route::get('/showMedicalHistory/{id}',[DoctorController::class,'medicalHistory']);
+    Route::get('/editMedicalHistory/{id}',[DoctorController::class,'editMedicalHistory'])->name('editMedicalHistory');
+    Route::post('/updateMedicalHistory',[DoctorController::class,'updateMedicalHistory'])->name('updateMedicalHistory');
+    Route::post('/updateMedicalRecord',[DoctorController::class,'updateMedicalRecord'])->name('updateMedicalRecord');
+    Route::get('/editMedicalRecord/{id}',[DoctorController::class,'editMedicalRecord'])->name('editMedicalRecord');
     Route::get('/vitals', [DoctorController::class,'vitals']);
     Route::get('/history', [DoctorController::class,'history']);
 
@@ -53,7 +59,7 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/myprofile', [UserController::class, 'show'])->name('myprofile');
     Route::get('/myprofileEdit', [UserController::class, 'edit'])->name('myprofileEdit');
-    Route::post('/myprofileUpdate/{id}', [UserController::class, 'update'])->name('myprofileUpdate');
+    Route::post('/myprofileUpdate/{patient_id}', [UserController::class, 'update'])->name('myprofileUpdate');
     Route::get('/medicalHistory', [UserController::class, 'showMedicalHistory'])->name('medicalHistory');
     Route::get('/medicalHistoryEdit', [UserController::class, 'editMedicalHistory'])->name('medicalHistoryEdit');
     Route::post('/medicalHistoryUpdate', [UserController::class, 'updateMedicalHistory'])->name('medicalHistoryUpdate');
