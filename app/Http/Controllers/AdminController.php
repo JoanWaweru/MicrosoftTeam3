@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -18,7 +20,10 @@ class AdminController extends Controller
 
     public function registeredStaff()
     {
-        return view('admin/registered_staff');
+//        $user= User::where('role',$role)->get();
+        $user = DB::select('select * from users where role != "Patient"');
+        return view('admin.registered_staff',['user'=>$user]);
+//        return view('admin/registered_staff');
     }
 
     public function addStaff()
@@ -29,8 +34,8 @@ class AdminController extends Controller
     public function registeredPatients()
     {
         return view('admin/registered_patients');
-    }   
-    
+    }
+
     public function admin_profile()
     {
         return view('admin/admin_profile');
