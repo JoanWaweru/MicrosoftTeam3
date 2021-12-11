@@ -24,12 +24,21 @@
                 <div class="ml-auto">
                     <header class="mb-4"><h1 class="tm-text-shadow">Microsoft Team 3</h1></header>
                     <p class="mb-5 tm-font-big">Welcome to our application.</p>
+                    <!--use enctype="multipart/form-data -->
+                  
+                   
+                  
+                    
                     <a href="{{route('myprofile')}}" class="btn tm-btn tm-font-big">My Profile</a>
-                    <a href="{{route('medicalHistory')}}" class="btn tm-btn tm-font-big">Medical History</a>
-                    <a href="{{route('medicalRecord')}}" class="btn tm-btn tm-font-big">Medical Record</a>
-                    <a href="{{route('trainFace')}}" class="btn tm-btn tm-font-big">Train Face</a>
-
-{{--                    <a href="{{route('logout')}}" class="btn tm-btn tm-font-big">Log Out</a>--}}
+                    <a href="{{route('vitals')}}" class="btn tm-btn tm-font-big">Insert patient Vitals</a>
+                    <a href="{{route('getpatient')}}" class="btn tm-btn tm-font-big">Get Patient</a>
+                    
+                   
+                    <a href="{{route('insertPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Insert Medical History</a>
+                    <a href="{{route('getPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Get Medical History</a>
+                  
+                    <a href="{{route('trainFace')}}" class="btn tm-btn tm-font-big">Train Face</a>    
+{{--                <a href="{{route('logout')}}" class="btn tm-btn tm-font-big">Log Out</a>--}}
                     <a class="btn tm-btn tm-font-big" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
