@@ -1,5 +1,15 @@
 @extends('layouts.admin')
-
+@php
+    $id=$name=$email=$phone_number=$profile_photo="";
+    $user=Auth::user();
+    if ($user!=null) {
+        $id = $user->id;
+        $name = $user->name;
+        $email = $user->email;
+        $phone_number = $user->phone_number;
+        $profile_photo = $user->profile_photo;
+    }
+@endphp
 @section('content')
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -28,7 +38,7 @@
                 <div class="card-header">{{ __('Update Profile') }}</div>
 
                 <div class="card-body" style="background-image: url('assets/images/category-2.jpg');">
-                    <form method="POST" action=" " enctype="multipart/form-data">
+                    <form method="POST" action={{route('updateAdmin',$user->id)}}  enctype="multipart/form-data">
                         @csrf
                         <?php 
                             
@@ -38,7 +48,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Id') }}</label>
                             <div class="col-md-6">
-                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value=" ">
+                                <input id="id" type="text" class="form-control @error('id') is-invalid @enderror" name="id" value={{ $user->id}}>
                                 @error('id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -51,7 +61,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value=" ">
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value={{ $user->name}}>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -64,7 +74,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value=" ">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value={{ $user->email}}>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -77,7 +87,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
 
                             <div class="col-md-6">
-                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value=" "  >
+                                <input id="phone_number" type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value={{ $user->phone_number}}  >
                                 @error('phone_number')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -106,7 +116,7 @@
                             <label for="profile_photo" class="col-md-4 col-form-label text-md-right">{{ __('Upload profile') }}</label>
 
                             <div class="col-md-6">
-                                <input id="formFileSm" type="file" class="form-control-sm" name="profile_photo" >
+                                <input id="formFileSm" type="file" class="form-control-sm" name="profile_photo" value={{ $user->profile_photo }}>
                             </div>
                         </div>
 
@@ -117,7 +127,19 @@
                                 <button type="submit" class="btn btn-raised btn-primary" style="background-color: green; border-color: green; z-index: 2;">
                                     {{ __('Update') }}
                                 </button>
+                                <div class="success-message">
+                                        @php
+                                            if(isset($succesMessage)){
+                                                 echo $succesMessage;
+                                            }
+                                        @endphp 
+                                     </div>
                             </div>
+                            <div class="form-row">
+                              <div class="col-lg-7">
+                              <a href="/view_profile" class="btn btn-primary ">Back</a>
+                            </div>
+                            
                         </div>
                     </form>
                 </div>

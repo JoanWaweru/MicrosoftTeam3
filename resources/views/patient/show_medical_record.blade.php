@@ -9,7 +9,7 @@
             <th>Date</th>
             <th>Temperature</th>
             <th>Blood Pressure</th>
-            <th>Puls rate</th>
+            <th>Pulse rate</th>
             <th>respiration rate</th>
             <th>Symptoms</th>
             <th>Condition Image</th>
@@ -28,7 +28,7 @@
                 $prescription= $doctorResponse->prescription;
                 $comment= $doctorResponse->comment;
             }
-            $link= storage_path().'/medicalRecordPhotos/'.$medicalRecord->condition_image_path;
+            $link= asset('storage/medicalRecordPhotos/'.$medicalRecord->condition_image_path);
         @endphp
         <tr>
             <td>{{date('M j Y', strtotime($medicalRecord->created_at))}}</td>
@@ -42,14 +42,14 @@
             @else
             <td>No Image</td>
             @endif
-            
+
             <td>{{$diagnosis}}</td>
             <td>{{$prescription}}</td>
             <td>{{$comment}}</td>
-            
-        </tr>    
+
+        </tr>
         @endforeach
-        
+
     </tbody>
 </table>
 <div class="button_box">

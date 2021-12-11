@@ -22,25 +22,32 @@
     <section class="content">
       <div class="container-fluid">
       <table id="datatableid"class="table table-secondary table-bordered-responsive">
-              <thead>  
+              <thead>
               <tr>
               <th>Staff ID</th>
 			  <th>Staff Name</th>
 			  <th>E-mail Address</th>
               <th>Role</th>
-			  <th>Edit</th>
-			  <th>Disable</th> 
-              <th>Enable</th>
+			  <th>Action</th>
+{{--			  <th>Disable</th>--}}
+{{--              <th>Enable</th>--}}
                 </tr>
               </thead>
               <tbody>
-                  <?php
-
-                  ?>
+              @foreach ($user as $users)
+                  <tr>
+                      <td>{{$users->id}}</td>
+                      <td>{{$users->name}}</td>
+                      <td>{{$users->email}}</td>
+                      <td>{{$users->role}}</td>
+                      <td> <a href={{ route('edit_staff')}} class="btn btn-primary" type="button">Edit</a></td>
+                      <td> <a href={{ route('delete_staff',$users->id)}} class="btn btn-primary" type="button">Delete</a></td>
+                  </tr>
+              @endforeach
               </tbody>
               </table>
-       
-           
+
+
       </div><!-- /.container-fluid -->
     </section>
 @endsection

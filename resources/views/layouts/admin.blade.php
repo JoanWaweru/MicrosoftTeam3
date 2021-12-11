@@ -25,6 +25,8 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+
+  @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -60,9 +62,15 @@
             View Profile
           </a>
           <div class="dropdown-divider"></div>
-          <a href="#" class="dropdown-item">
-            Log Out
-          </a>
+            <a class="dropdown-item" href="{{ route('logout') }}"
+               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                {{ __('Log Out') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
       </li>
       <li class="nav-item">
         <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -76,7 +84,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="#" class="brand-link">
+    <a href="/admin_landing" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Admin Dashboard</span>
     </a>
@@ -89,8 +97,8 @@
           <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-     
+          <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+
         </div>
       </div>
 
@@ -121,12 +129,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="/add_staff" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Staff Members</p>
-                </a>
-              </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="/add_staff" class="nav-link">--}}
+{{--                  <i class="far fa-circle nav-icon"></i>--}}
+{{--                  <p>Add Staff Members</p>--}}
+{{--                </a>--}}
+{{--              </li>--}}
               <li class="nav-item">
                 <a href="/registered_staff" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -136,10 +144,10 @@
               <li class="nav-item">
                 <a href="/roles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Edit/Disable Staff</p>
+                  <p>Edit/Delete Staff</p>
                 </a>
               </li>
-              
+
             </ul>
           </li>
           <li class="nav-item">
@@ -157,48 +165,18 @@
                   <p>View Registered Patients</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>xxxxxx</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>xxxxxx</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-header">EMAIL</li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-envelope"></i>
-              <p>
-                Mailbox
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Inbox</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Compose</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Read</p>
-                </a>
-              </li>
+{{--              <li class="nav-item">--}}
+{{--                <a href="#" class="nav-link">--}}
+{{--                  <i class="far fa-circle nav-icon"></i>--}}
+{{--                  <p>xxxxxx</p>--}}
+{{--                </a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a href="#" class="nav-link">--}}
+{{--                  <i class="far fa-circle nav-icon"></i>--}}
+{{--                  <p>xxxxxx</p>--}}
+{{--                </a>--}}
+{{--              </li>--}}
             </ul>
           </li>
         </ul>
@@ -264,5 +242,7 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
+
+@stack('scripts')
 </body>
 </html>

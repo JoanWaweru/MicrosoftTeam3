@@ -21,7 +21,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
-      
+
       <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
                 <thead>
                 <tr>
@@ -32,14 +32,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                    <?php
+                @foreach ($user as $users)
+{{--                    @php--}}
+{{--                        --}}
+{{--                        if($medicalRecord->doctor_response_id!=null){--}}
+{{--                            $doctorResponse=\App\Models\DoctorResponse::find($medicalRecord->doctor_response_id);--}}
+{{--                            $diagnosis= $doctorResponse->diagnosis;--}}
+{{--                            $prescription= $doctorResponse->prescription;--}}
+{{--                            $comment= $doctorResponse->comment;--}}
+{{--                        }--}}
+{{--                        $link= asset('storage/medicalRecordPhotos/'.$medicalRecord->condition_image_path);--}}
+{{--                    @endphp--}}
+                    <tr>
+{{--                        <td>{{date('M j Y', strtotime($users->created_at))}}</td>--}}
+                        <td>{{$users->id}}</td>
+                        <td>{{$users->name}}</td>
+                        <td>{{$users->email}}</td>
+                        <td>{{$users->role}}</td>
+                    </tr>
+                @endforeach
 
-                    ?>
                 </tbody>
                 </table>
 
           <!-- ./col -->
       </div><!-- /.container-fluid -->
     </section>
-  
+
 @endsection

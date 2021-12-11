@@ -44,9 +44,11 @@ class PermissionsSeeder extends Seeder
             'name' => 'Example Admin',
 
             'email' => 'admin@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Lost city',
-            'date_of_birth' => '19-06-2000',
+            'role' => 'Admin',
             'phone_number' => '+2547123456788',
         ]);
         $user->assignRole($admin);
@@ -55,9 +57,12 @@ class PermissionsSeeder extends Seeder
             'name' => 'Example Patient',
 
             'email' => 'patient@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'date_of_birth' => '19-06-2000',
             'city' => 'Lost city',
+            'role' => 'Patient',
             'phone_number' => '+2547123456788',
 
         ]);
@@ -65,10 +70,12 @@ class PermissionsSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Example Doctor',
-            'date_of_birth' => '19-06-2000',
             'email' => 'doctor@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Found city',
+            'role' => 'Doctor',
             'phone_number' => '+2547123456788',
 
         ]);
@@ -77,10 +84,13 @@ class PermissionsSeeder extends Seeder
         $user = \App\Models\User::factory()->create([
 
             'name' => 'Example Nurse',
-            'date_of_birth' => '19-06-2000',
+
             'email' => 'nurse@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Nurse city',
+            'role' => 'Nurse',
             'phone_number' => '+2547123456788',
         ]);
         $user->assignRole($nurse);
@@ -88,10 +98,13 @@ class PermissionsSeeder extends Seeder
         $user = \App\Models\User::factory()->create([
 
             'name' => 'Joan Waweru',
-            'date_of_birth' => '19-06-2000',
+
             'email' => 'joan.waweru@strathmore.edu',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Nairobi',
+            'role' => 'Patient',
             'phone_number' => '+254740182052',
         ]);
         $user->assignRole($patient);

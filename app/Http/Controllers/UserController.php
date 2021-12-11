@@ -92,20 +92,29 @@ class UserController extends Controller
             'email'=>'required',
             'phone_number'=>'required',
             'profile_photo'=>'required',
-            'city'=>'required'
+            'city'=>'required',
+            'date_of_birth'=>'required'
         ]);
 //        $user = User::where('id',$id)->first();
 
+        //storing Image in the public directory
+        $photo= $request->file('profile_photo');
+        $user_id = Auth::id();
+        if($photo){
+            $imageExtension = $photo->extension();
+            $photoName = "profile_image".$user_id.'.'.$imageExtension;
+            $path=$photo->storeAs('profilePhotos',$photoName,'public');
+            $user->profile_photo = $photoName;
+        }
+
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
+        $user->date_of_birth = $request->get('date_of_birth');
         $user->phone_number = $request->get('phone_number');
-        $user->profile_photo = $request->get('profile_photo');
         $user->city = $request->get('city');
         $user->update();
 
         return redirect('/myprofile')->with('success', 'Profile has been updated!');
-//        return view('patient.edit')->with('success', 'Profile has been updated!');
-//        return view('patient.show', ['user'=>$user, 'successMessage'=>"Profile successfully updated"]);
     }
 
     /**
@@ -129,6 +138,7 @@ class UserController extends Controller
         $medicalHistory = MedicalHistory::where('patient_id',$id)->first();
         $medicalHistory->weight= $request->weight;
         $medicalHistory->height= $request->height;
+        $medicalHistory->medication= $request->medication;
         $medicalHistory->medical_problems= $request->medical_problems;
         $medicalHistory->allergies= $request->allergies;
         $medicalHistory->update();
