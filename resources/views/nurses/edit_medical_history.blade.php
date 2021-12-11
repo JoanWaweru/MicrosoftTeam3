@@ -8,27 +8,14 @@
                     <div class="card-header">{{ __('Update Medical History') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action={{ route('updatePatientMedicalData') }} enctype="multipart/form-data">
+                        <form method="POST" action={{ route('updatePatientMedicalHistory') }} enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{$data['id']}}" style="display:none;">
                             <div class="form-group row">
-                                <label for="height" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <label for="height" class="col-md-4 col-form-label text-md-right">{{ __('Weight') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('height') is-invalid @enderror" name="name" value="{{$data['name']}}" required autofocus>
-
-                                    @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="text" class="form-control @error('weight') is-invalid @enderror" name="email"  value="{{$data['email']}}" required>
+                                    <input id="name" type="text" class="form-control @error('weight') is-invalid @enderror" name="weight" value="{{$data['weight']}}" required autofocus>
 
                                     @error('weight')
                                     <span class="invalid-feedback" role="alert">
@@ -37,12 +24,25 @@
                                     @enderror
                                 </div>
                             </div>
-
                             <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+                                <label for="height" class="col-md-4 col-form-label text-md-right">{{ __('Height') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control @error('medical_problems') is-invalid @enderror" name="city" value="{{$data['city']}}" style="height:fit-content; overflow:hidden;" required>
+                                    <input id="height" type="text" class="form-control @error('height') is-invalid @enderror" name="height"  value="{{$data['height']}}" required>
+
+                                    @error('height')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="medical_problems" class="col-md-4 col-form-label text-md-right">{{ __('Medical Condition') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="medical_problems" type="text" class="form-control @error('medical_problems') is-invalid @enderror" name="medical_problems" value="{{$data['medical_problems']}}" style="height:fit-content; overflow:hidden;" required>
                                     
                                     @error('medical_problems')
                                     <span class="invalid-feedback" role="alert">
@@ -53,10 +53,10 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date Of Birth') }}</label>
+                                <label for="allergies" class="col-md-4 col-form-label text-md-right">{{ __('Allergies') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="date_of_birth" type="text" class="form-control @error('allergies') is-invalid @enderror" name="date_of_birth" value="{{$data['date_of_birth']}}" style="height:fit-content; overflow:hidden;" required >
+                                    <input id="allergies" type="text" class="form-control @error('allergies') is-invalid @enderror" name="allergies" value="{{$data['allergies']}}" style="height:fit-content; overflow:hidden;" required >
                                        
                                     @error('allergies')
                                     <span class="invalid-feedback" role="alert">
@@ -68,10 +68,10 @@
 
 
                             <div class="form-group row">
-                                <label for="phone_number" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
+                                <label for="medication" class="col-md-4 col-form-label text-md-right">{{ __('Medication') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{$data['phone_number']}}" required>
+                                    <input id="medication" type="text" class="form-control" name="medication" value="{{$data['medication']}}" required>
                                     
                                     @error('medication')
                                     <span class="invalid-feedback" role="alert">
@@ -85,7 +85,7 @@
                             <div class="form-group row mb-0">
 
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('update') }}</button>
                                     
                                 </div>
                                 <div class="success-message">

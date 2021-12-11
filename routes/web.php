@@ -93,7 +93,8 @@ Route::middleware(['auth', 'role:nurse'])->group(function () {
     Route::get('/getpatient', [NurseController::class, 'getpatient'])->name('getpatient');
     Route::get('/editPatientHistory/{id}', [NurseController::class, 'editPatientHistory'])->name('editPatientHistory');
     Route::get('/editPatientData/{id}', [NurseController::class, 'editPatientData'])->name('editPatientData');
-    Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
+    Route::get('/trainFace', [NurseController::class, 'trainFace'])->name('trainFace');//emergency_contact
+    Route::get('/emergency_contact/{id}', [NurseController::class, 'emergency_contact'])->name('emergency_contact');
 });
    
 

@@ -7,6 +7,7 @@ use App\Models\MedicalHistory;
 use App\Models\MedicalRecord;
 use App\Models\User;
 use App\Models\EmergencyContact;
+use Illuminate\Support\Facades\Auth;
 
 class NurseController extends Controller
 {
@@ -45,6 +46,17 @@ class NurseController extends Controller
         return view('nurses/edit_patient_data' , ['data' => $user]);
 
      }
+     public function emergency_contact($id){
+        $user =  EmergencyContact::find($id);
+        
+        return view('nurses/emergency_contacts', ['values' => $user]);
+
+     }
+     public function trainFace(){
+         
+        return view('nurses/nurse_train_face');
+    }
+    
 
      public function updatePatientMedicalData(Request $request){
          //find user by id then update their details
@@ -54,14 +66,20 @@ class NurseController extends Controller
         $user->city = $request->city;
         $user->phone_number = $request->phone_number;
         $user->update();
-        $user =  User::all();
-        return view('nurses/patients' , ['values' => $user]);
+       
+        //get patients only
+        $patients= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'patient');
+        })->get();
+        return view('nurses/patients' , ['values' => $patients]);
 
      }
 
      public function editPatientHistory($id){
         //redirect to edit page
         $user =  MedicalHistory::find($id);
+
+        //dd($user);
         return view('nurses/edit_medical_history' , ['data' => $user]);
      }
     
@@ -101,10 +119,12 @@ class NurseController extends Controller
         $user->medication = $request->input('medication');
         $user->emergency_contact_id = $request->input('id');
         $user->patient_id = $request->input('id');
+        $user->patients_id = $request->input('id');
         $user->save();
         //insert data for emergency contact
         $data = new EmergencyContact();
         $data->patient_id = $request->input('id');
+        $data->patients_id = $request->input('id');
         $data->first_name = $request->input('first_name');
         $data->last_name = $request->input('last_name');
         $data->relationship = $request->input('relationship');

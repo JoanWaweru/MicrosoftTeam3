@@ -19,6 +19,7 @@ class CreateEmergencyContactsTable extends Migration
             $table->string('last_name');
             $table->string('relationship');
             $table->string('phone_number');
+            $table->string('patients_id');//acts as a reference in the nurses module
             $table->timestamps();
         });
     }

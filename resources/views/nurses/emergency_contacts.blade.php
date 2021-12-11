@@ -24,39 +24,34 @@
       <h1>Users</h1>
     <form method="POST" action="/editPatientData">
     @csrf 
-      <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
+   
+        <h1>Emergency Contacts</h1>
+        <table id="datatableid"class="table table-secondary table-bordered" style="width:100%">
                 <thead>
                 <tr>
-                  <th>Patient ID</th>
-                  <th>Name</th>
-                  <th>E-mail Address</th>
-                  <th>City</th>
-                  <th>Date of Birth</th>
+                <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Relationship</th>
                   <th>Phone Number</th>
-                  
-                  
                 </tr>
                 </thead>
                 @foreach ($values as $value)
           
-          <tr>
+                <tr>
               
-                 <td>{{  $value['id']  }} </td>
-                 <td>{{  $value['name']  }} </td>
-                 <td>{{  $value['email']  }} </td>
-                 <td>{{  $value['city']  }} </td>
-                 <td>{{  $value['date_of_birth']  }} </td>
-                 <td>{{  $value['phone_number']  }} </td>
-                
-                    <td> <a href={{"editPatientData/".$value['id']  }}>Edit</a></td>
-                    
-                 
-          
-             @endforeach
-          </tr>
+              <td>{{  $value['id']  }} </td>
+              <td>{{  $value['first_name']  }} </td>
+              <td>{{  $value['last_name']  }} </td>
+              <td>{{  $value['relationship']  }} </td>
+              <td>{{  $value['phone_number']  }} </td>
+            
+              
+       
+                 @endforeach
+                 </tr>
 
-                </table>
-           </form>
+            </table>
+        </form>
 
           <!-- ./col -->
       </div><!-- /.container-fluid -->
