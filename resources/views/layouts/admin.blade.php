@@ -129,12 +129,12 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-            <li class="nav-item">
-                <a href="/add_staff" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Staff Members</p>
-                </a>
-              </li>
+{{--            <li class="nav-item">--}}
+{{--                <a href="/add_staff" class="nav-link">--}}
+{{--                  <i class="far fa-circle nav-icon"></i>--}}
+{{--                  <p>Add Staff Members</p>--}}
+{{--                </a>--}}
+{{--              </li>--}}
               <li class="nav-item">
                 <a href="/registered_staff" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -144,7 +144,7 @@
               <li class="nav-item">
                 <a href="/roles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Edit/Disable Staff</p>
+                  <p>Edit/Delete Staff</p>
                 </a>
               </li>
 
@@ -165,18 +165,18 @@
                   <p>View Registered Patients</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>xxxxxx</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>xxxxxx</p>
-                </a>
-              </li>
+{{--              <li class="nav-item">--}}
+{{--                <a href="#" class="nav-link">--}}
+{{--                  <i class="far fa-circle nav-icon"></i>--}}
+{{--                  <p>xxxxxx</p>--}}
+{{--                </a>--}}
+{{--              </li>--}}
+{{--              <li class="nav-item">--}}
+{{--                <a href="#" class="nav-link">--}}
+{{--                  <i class="far fa-circle nav-icon"></i>--}}
+{{--                  <p>xxxxxx</p>--}}
+{{--                </a>--}}
+{{--              </li>--}}
             </ul>
           </li>
         </ul>

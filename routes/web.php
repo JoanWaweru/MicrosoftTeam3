@@ -32,8 +32,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin_landing', [AdminController::class,'index']);
 //    Route::get('/registered_staff', [AdminController::class,'registeredStaff']);
     Route::get('/registered_staff', [AdminController::class, 'registeredStaff'])->name('registered_staff');
-    Route::get('/add_staff', [AdminController::class,'addStaff']);
-    Route::get('/roles', [AdminController::class,'roles']);
+    Route::get('/edit_staff', [AdminController::class,'addStaff'])->name('edit_staff');
+    Route::post('/update_staff/{id}', [AdminController::class, 'updateStaff'])->name('update_staff');
+    Route::get('/delete_staff/{id}', [AdminController::class, 'deleteStaff'])->name('delete_staff');
+    Route::get('/roles', [AdminController::class,'roles'])->name('roles');
     Route::get('/registered_patients', [AdminController::class,'registeredPatients']);
     Route::get('/admin_profile', [AdminController::class,'admin_profile']);
     Route::get('/view_profile', [AdminController::class,'view_profile']);

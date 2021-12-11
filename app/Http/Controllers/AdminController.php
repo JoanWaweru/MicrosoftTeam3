@@ -31,7 +31,8 @@ class AdminController extends Controller
 
     public function roles()
     {
-        return view('admin/roles');
+        $user = DB::select('select * from users where role != "Patient"');
+        return view('admin.roles',['user'=>$user]);
     }
 
     public function registeredStaff()
@@ -97,6 +98,53 @@ class AdminController extends Controller
         $user->update();
 
         return redirect('/view_profile')->with('success', 'Profile has been updated!');
+    }
+
+    public function updateStaff(Request $request, $id)
+    {
+//        $id=  Auth::id();
+        $user = User::findOrFail($id);
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'role'=>'required',
+        ]);
+//        $user = User::where('id',$id)->first();
+
+        //storing Image in the public directory
+        $user_id = Auth::id();
+
+        $user->name =  $request->get('name');
+        $user->email = $request->get('email');
+        $user->role = $request->get('role');
+        $user->update();
+
+        return redirect('/roles')->with('success', 'Staff Profile has been updated!');
+    }
+
+    public function deleteStaff(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user = DB::delete('delete from users where id = ?', [$id]);
+
+        $user = User::findOrFail($id);
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'role'=>'required',
+        ]);
+//        $user = User::where('id',$id)->first();
+
+        //storing Image in the public directory
+        $user_id = Auth::id();
+
+        $user->name =  $request->get('name');
+        $user->email = $request->get('email');
+        $user->role = $request->get('role');
+        $user->delete();
+
+        return redirect('/roles')->with('success', 'Staff Member has been deleted from database!');
+
     }
 
 

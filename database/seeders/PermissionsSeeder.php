@@ -44,6 +44,8 @@ class PermissionsSeeder extends Seeder
             'name' => 'Example Admin',
 
             'email' => 'admin@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Lost city',
             'role' => 'Admin',
@@ -55,6 +57,8 @@ class PermissionsSeeder extends Seeder
             'name' => 'Example Patient',
 
             'email' => 'patient@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Lost city',
             'role' => 'Patient',
@@ -67,6 +71,8 @@ class PermissionsSeeder extends Seeder
             'name' => 'Example Doctor',
 
             'email' => 'doctor@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Found city',
             'role' => 'Doctor',
@@ -80,6 +86,8 @@ class PermissionsSeeder extends Seeder
             'name' => 'Example Nurse',
 
             'email' => 'nurse@example.com',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Nurse city',
             'role' => 'Nurse',
@@ -92,6 +100,8 @@ class PermissionsSeeder extends Seeder
             'name' => 'Joan Waweru',
 
             'email' => 'joan.waweru@strathmore.edu',
+            'status' => 'Active',
+            'date_of_birth' => 10-8-2001,
             'password' => bcrypt('12345678'),
             'city' => 'Nairobi',
             'role' => 'Patient',
