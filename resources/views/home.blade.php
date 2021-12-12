@@ -30,11 +30,12 @@
                   
                     
                     <a href="{{route('myprofile')}}" class="btn tm-btn tm-font-big">My Profile</a>
-                    <a href="{{route('vitals')}}" class="btn tm-btn tm-font-big">Insert patient Vitals</a>
-                    <a href="{{route('getpatient')}}" class="btn tm-btn tm-font-big">Get Patient</a>
+                    <a href="{{route('medicalHistory')}}" class="btn tm-btn tm-font-big">Medical History</a>
+                    <a href="{{route('medicalRecord')}}" class="btn tm-btn tm-font-big">Medical Record</a>
+
                     
                    
-                    <a href="{{route('insertPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Insert Medical History</a>
+                    {{-- <a href="{{route('insertPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Insert Medical History</a> --}}
                     {{-- <a href="{{route('getPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Get Medical History</a>
                    --}}
                     <a href="{{route('trainFace')}}" class="btn tm-btn tm-font-big">Train Face</a>    

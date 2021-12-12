@@ -58,7 +58,7 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/medicalRecordNew', [MedicalRecordController::class, 'add'])->name('medicalRecordNew');
     Route::post('/medicalRecordAdd', [MedicalRecordController::class, 'save'])->name('medicalRecordAdd');
 
-    Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
+    //Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
 });
 
 //Doctor Routes
@@ -105,11 +105,11 @@ Route::middleware(['auth', 'role:nurse'])->group(function () {
     // Route::post('/updatePatientMedicalData', [NurseController::class, 'updatePatientMedicalData'])->name('updatePatientMedicalData');
     // Route::get('/getPatientMedicalHistory/{patient_id}', [NurseController::class, 'getPatientMedicalHistory'])->name('getPatientMedicalHistory');
     // Route::get('/editPatientHistory/{id}', [NurseController::class, 'editPatientHistory'])->name('editPatientHistory');
-    Route::get('/trainFace', [NurseController::class, 'trainFace'])->name('trainFace');//emergency_contact
+    //Route::get('/trainFace', [NurseController::class, 'trainFace'])->name('trainFace');//emergency_contact
     Route::get('/emergency_contact/{id}', [NurseController::class, 'emergency_contact'])->name('emergency_contact');
 });
-   
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
+
 
 
 
