@@ -87,7 +87,7 @@ Route::middleware(['auth', 'role:nurse'])->group(function () {
     Route::post('/updateMedicalHistory',[NurseController::class,'updateMedicalHistory'])->name('updateMedicalHistory');
     Route::post('/saveMedicalHistory',[NurseController::class,'saveMedicalHistory'])->name('saveMedicalHistory');
     Route::post('/updateNurseProfile', [NurseController::class, 'updateProfile'])->name('updateNurseProfile');
-    Route::get('/nurseEditProfile', [NurseController::class, 'editProfile'])->name('myprofile');
+    Route::get('/nurseEditProfile', [NurseController::class, 'editProfile'])->name('nurseEditProfile');
     Route::get('/getvitals', [NurseController::class, 'vitalspage'])->name('vitals');
     Route::post('/sendvitals', [NurseController::class, 'vitals'])->name('sendvitals');
     Route::get('/patientProfile', [NurseController::class, 'patientProfile'])->name('patientProfile');
