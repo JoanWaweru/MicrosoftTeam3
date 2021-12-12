@@ -44,7 +44,7 @@ class UserController extends Controller
         $id=Auth::id();
 
         $medicalHistory = MedicalHistory::where('patient_id','=',$id)->first();
-        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        $emergencyContact = $medicalHistory==null? null:EmergencyContact::find($medicalHistory->emergency_contact_id);
         return view('patient.show_medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
     }
 

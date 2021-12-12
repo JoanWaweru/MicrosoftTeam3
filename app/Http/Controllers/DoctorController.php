@@ -51,7 +51,7 @@ class DoctorController extends Controller
     public function medicalHistory($patient_id){
 
         $medicalHistory = MedicalHistory::where('patient_id','=',$patient_id)->first();
-        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        $emergencyContact = $medicalHistory==null? null:EmergencyContact::find($medicalHistory->emergency_contact_id);
         return view('doctors.medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
     }
 
