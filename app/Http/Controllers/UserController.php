@@ -158,6 +158,20 @@ class UserController extends Controller
         ]);
 
         $medicalHistory = MedicalHistory::where('patient_id',$id)->first();
+        if ($medicalHistory==null) {
+            $medicalHistory= new MedicalHistory();
+            $medicalHistory->weight = $medicalHistory->height = $medicalHistory->medication = $medicalHistory->medical_problems = $medicalHistory->allergies = "Not filled";
+            $medicalHistory->patient_id= $id;
+            $emergencyContact= new EmergencyContact();
+            $emergencyContact->first_name =$request->first_name;
+            $emergencyContact->last_name =$request->last_name;
+            $emergencyContact->relationship =$request->relationship;
+            $emergencyContact->phone_number =$request->phonenumber;
+            $emergencyContact->save();
+
+            $medicalHistory->emergency_contact_id= $emergencyContact->id;
+            $medicalHistory->save();
+        }
         $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
         if($emergencyContact==null){
             $emergencyContact= new EmergencyContact();
