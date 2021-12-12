@@ -74,6 +74,9 @@ Route::middleware(['auth', 'role:doctor'])->group(function () {
     Route::get('/editMedicalRecord/{id}',[DoctorController::class,'editMedicalRecord'])->name('editMedicalRecord');
     Route::get('/vitals', [DoctorController::class,'vitals']);
     Route::get('/history', [DoctorController::class,'history']);
+    Route::get('/profile', [DoctorController::class,'profile']);
+    Route::get('/doctor_profile', [DoctorController::class,'doctor_profile']);
+    Route::post('/updateDoctor/{id}', [DoctorController::class, 'updateDoctor'])->name('updateDoctor');
 
 });
 //nurse routes

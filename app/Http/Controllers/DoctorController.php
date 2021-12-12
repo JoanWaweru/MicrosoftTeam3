@@ -15,15 +15,11 @@ class DoctorController extends Controller
 {
     public function index()
     {
-        return view('doctors/doctor_landing');
-    }
-
-    public function patients(){
         $patients= User::whereHas('roles', function($role) {
             $role->where('name', '=', 'patient');
-        })->get();
-        
-        return view('doctors/patients',compact('patients'));
+        })->count();
+
+        return view('doctors/doctor_landing',compact('patients'));
     }
 
     public function patientsWaiting(){
@@ -46,6 +42,19 @@ class DoctorController extends Controller
     
     public function history(){
         return view('doctors/history');
+    }
+
+    public function profile()
+    {
+        $user=Auth::user();
+        return view('doctors/profile', compact('user'));
+
+    }
+
+    public function doctor_profile()
+    {
+        $user=Auth::user();
+        return view('doctors/doctor_profile', compact('user'));
     }
 
     public function medicalHistory($patient_id){
@@ -97,6 +106,36 @@ class DoctorController extends Controller
         $medicalRecord->update();
 
         return view('doctors.update_medical_record', ['medicalHistory'=>$medicalRecord, 'succesMessage'=>"Medical History successfully updated"]);
+    }
+
+    public function updateDoctor(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $request->validate([
+            'id'=>'required',
+            'name'=>'required',
+            'email'=>'required',
+            'phone_number'=>'required',
+            'profile_photo'=>'required',
+        ]);
+
+        //storing Image in the public directory
+        $photo= $request->file('profile_photo');
+        $user_id = Auth::id();
+        if($photo){
+            $imageExtension = $photo->extension();
+            $photoName = "profile_image".$user_id.'.'.$imageExtension;
+            $path=$photo->storeAs('profilePhotos',$photoName,'public');
+            $user->profile_photo = $photoName;
+        }
+
+        $user->id=$request->get('id');
+        $user->name =  $request->get('name');
+        $user->email = $request->get('email');
+        $user->phone_number = $request->get('phone_number');
+        $user->update();
+
+        return redirect('/profile')->with('success', 'Profile has been updated!');
     }
     
 }
