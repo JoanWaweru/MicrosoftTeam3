@@ -79,7 +79,7 @@ class PermissionsSeeder extends Seeder
             'phone_number' => '+2547123456788',
 
         ]);
-        $user->assignRole($nurse);
+        $user->assignRole($doctor);
 
         $user = \App\Models\User::factory()->create([
 

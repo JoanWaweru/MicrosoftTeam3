@@ -90,7 +90,17 @@
                    
                </div>
                <div class="button-box">
-               <a href={{ route('editMedicalHistory',['id'=>$medicalHistory->id])}} class="btn btn-primary" type="button">Edit Medical History</a>
+                   @if ($medicalHistory!=null)
+                   <a href={{ route('editMedicalHistory',['id'=>$medicalHistory->id])}} class="btn btn-primary" type="button">Edit Medical History</a>
+                   @else
+                   <a href={{ route('addMedicalHistory',['id'=>$patientId])}} class="btn btn-primary" type="button">Edit Medical History</a>    
+                   @endif
+                   @php
+                       if($medicalHistory!=null){
+
+                       }
+                   @endphp
+               
                </div>
            </div>
            

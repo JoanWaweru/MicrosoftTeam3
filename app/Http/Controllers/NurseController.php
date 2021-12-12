@@ -13,32 +13,155 @@ class NurseController extends Controller
 {
     public function index()
     {
-        return view('/home');
+        return view('nurses.nurse_landing');
     }
 
-    
+    public function showProfile(User $user)
+    {
+        $user=Auth::user();
+        return view('patient.show', compact('user'));
+    }
+
+    public function editProfile(User $user)
+    {
+//        $user=Auth::user();
+//        return view('patient.edit', compact('user'));
+
+        $id=Auth::id();
+
+        $user = User::where('id','=',$id)->first();
+        return view('nurses.edit_profile',['user'=>$user]);
+    }
+    public function updateProfile(Request $request)
+    {
+//        $id=  Auth::id();
+        $user = User::find(Auth::id()) ;
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required',
+            'phone_number'=>'required',
+            'profile_photo'=>'required',
+            'city'=>'required',
+            'date_of_birth'=>'required'
+        ]);
+//        $user = User::where('id',$id)->first();
+
+        //storing Image in the public directory
+        $photo= $request->file('profile_photo');
+        $user_id = Auth::id();
+        if($photo){
+            $imageExtension = $photo->extension();
+            $photoName = "profile_image".$user_id.'.'.$imageExtension;
+            $path=$photo->storeAs('profilePhotos',$photoName,'public');
+            $user->profile_photo = $photoName;
+        }
+
+        $user->name =  $request->get('name');
+        $user->email = $request->get('email');
+        $user->date_of_birth = $request->get('date_of_birth');
+        $user->phone_number = $request->get('phone_number');
+        $user->city = $request->get('city');
+        $user->save();
+
+        return redirect('/nurseEditProfile')->with('successMessage', 'Profile has been updated!');
+    }
     public function getpatient(){
         //retrieve patients from the db using the role as a patient
         $patients= User::whereHas('roles', function($role) {
             $role->where('name', '=', 'patient');
         })->get();
        
-        return view('nurses/patients' , ['values' => $patients]);
+        return view('nurses/patients' , ['patients' => $patients]);
     }
+
+    public function patientsWaiting(){
+        $medicalRecords= MedicalRecord::where('doctor_response_id',null)->get();
+        $waitingPatientsId= array();
+        $waitingPatients= array();
+        foreach ($medicalRecords as $medicalRecord) {
+            if (!in_array($medicalRecord->patient_id, $waitingPatientsId)) {
+                array_push($waitingPatients,User::find($medicalRecord->patient_id));
+                array_push($waitingPatientsId,$medicalRecord->patient_id);
+            }
+        }
+        
+        return view('nurses/patients_waiting', ["waitingPatients"=>$waitingPatients]);
+    }
+
+    public function medicalHistory($patient_id){
+
+        $medicalHistory = MedicalHistory::where('patient_id','=',$patient_id)->first();
+        $emergencyContact = $medicalHistory== null? null: EmergencyContact::find($medicalHistory->emergency_contact_id);
+        return view('nurses.medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact,'patientId'=>$patient_id]);
+    }
+
+    public function medicalRecord($patient_id){
+        //dd()
+        $medicalRecords= MedicalRecord::where('patient_id',$patient_id)->get();
+        return view('nurses.medical_record',['medicalRecords'=>$medicalRecords]);
+    }
+
+    public function editMedicalHistory($medicalHistoryId,Request $request){
+        $medicalHistory = MedicalHistory::find($medicalHistoryId);
+        return view('nurses.edit_medical_history',['medicalHistory'=>$medicalHistory]);
+    }
+
+    public function addMedicalHistory($patientId,Request $request){
+        return view('nurses.edit_medical_history',['patientId'=>$patientId]);
+    }
+    public function updateMedicalHistory(Request $request){
+        $id= $request->id;
+        $medicalHistory = MedicalHistory::find($id);
+        $emergencyContact= EmergencyContact::find($medicalHistory->emergency_contact_id);
+        $emergencyContact->first_name =$request->first_name;
+        $emergencyContact->last_name =$request->last_name;
+        $emergencyContact->relationship =$request->relationship;
+        $emergencyContact->phone_number =$request->phonenumber;
+        $emergencyContact->save();
+
+        $medicalHistory->weight= $request->weight;
+        $medicalHistory->height= $request->height;
+        $medicalHistory->medication= $request->medication;
+        $medicalHistory->medical_problems= $request->medical_problems;
+        $medicalHistory->allergies= $request->allergies;
+        $medicalHistory->update();
+
+        return view('nurses.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact, 'succesMessage'=>"Medical History successfully updated"]);
+    }
+
+    public function saveMedicalHistory(Request $request){
+        
+        $emergencyContact= new EmergencyContact();
+        $emergencyContact->first_name =$request->first_name;
+        $emergencyContact->last_name =$request->last_name;
+        $emergencyContact->relationship =$request->relationship;
+        $emergencyContact->phone_number =$request->phonenumber;
+        $emergencyContact->save();
+        
+        $medicalHistory = new MedicalHistory();
+        $medicalHistory->weight= $request->weight;
+        $medicalHistory->height= $request->height;
+        $medicalHistory->medication= $request->medication;
+        $medicalHistory->medical_problems= $request->medical_problems;
+        $medicalHistory->allergies= $request->allergies;
+        $medicalHistory->emergency_contact_id= $emergencyContact->id;
+        $medicalHistory->patient_id= $request->id;
+        $medicalHistory->save();
+
+       
+        return redirect('/editMedicalHistory/'.$medicalHistory->id)->with('medicalHistory',$medicalHistory)->with('emergencyContact',$emergencyContact)->with( 'succesMessage',"Medical History successfully updated");
+    }
+
     public function vitalspage(){
 
         //access the vitals page
          return view('nurses/vitals');
      }
 
-     public function getpatientMedicalHistory(){
-         //get medical records 
-        $user = MedicalHistory::all();
-        //get emergency contact
-        $data = EmergencyContact::all();
-        return view('nurses/history' , ['values' => $user,'data' => $data,]);
-        
-         
+     public function getpatientMedicalHistory($patient_id){
+        $medicalHistory = MedicalHistory::where('patient_id','=',$patient_id)->first();
+        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        return view('nurses/history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);         
      }
      public function editPatientData($id){
          //find user by id
@@ -82,25 +205,7 @@ class NurseController extends Controller
         //dd($user);
         return view('nurses/edit_medical_history' , ['data' => $user]);
      }
-    
-     public function updatePatientMedicalHistory(Request $request){
-         //find medicalhistory using id then update the record for that patient
-        $user = MedicalHistory::find($request->id);
-        $user->weight=$request->weight;
-        $user->height=$request->height;
-        $user->allergies=$request->allergies;
-        $user->medication=$request->medication;
-        $user->medical_problems=$request->medical_problems;
-        $user->update();
-        //get all emergency contancts and users
-        $data = EmergencyContact::all();
-        $user =  MedicalHistory::all();
- 
-       
- 
-        return view('nurses/history' , ['values' => $user,'data' => $data]);
 
-     }
 
      public function insertPatientMedicalHistory(){
 
@@ -108,37 +213,11 @@ class NurseController extends Controller
          return view('nurses/patientsdata');
      }
 
-     public function createPatientMedicalHistory(Request $request){
-         //Inssert data for medical histories
-        $user = new MedicalHistory();
-        //$user->id = $request->input('id');
-        $user->weight = $request->input('weight');
-        $user->height = $request->input('height');
-        $user->medical_problems= $request->input('medical_problems');
-        $user->allergies = $request->input('allergies');
-        $user->medication = $request->input('medication');
-        $user->emergency_contact_id = $request->input('id');
-        $user->patient_id = $request->input('id');
-        $user->patients_id = $request->input('id');
-        $user->save();
-        //insert data for emergency contact
-        $data = new EmergencyContact();
-        $data->patient_id = $request->input('id');
-        $data->patients_id = $request->input('id');
-        $data->first_name = $request->input('first_name');
-        $data->last_name = $request->input('last_name');
-        $data->relationship = $request->input('relationship');
-        $data->phone_number = $request->input('phone_number');
-        $data->save(); 
-        return view('nurses/patientsdata');
-
-
-     }
     public function vitals(Request $request) {
         
         //Insert vitals into the database
         $user = new MedicalRecord();
-        $user->patients_id = $request->input('id');
+        $user->patient_id = $request->input('id');
       //  $user->name = $request->input('name');
         $user->pulse_rate = $request->input('pulse_rate');
         $user->respiration_rate = $request->input('respiration_rate');
@@ -146,8 +225,32 @@ class NurseController extends Controller
         $user->blood_pressure = $request->input('bpm');
         $user->symptoms = $request->input('symptoms'); 
         $user->save();
-        return view('nurses/vitals');
-        
+        return view('nurses/vitals',["succesMessage"=>"Vital added successfully"]);
+    }
 
+    public function patientProfile(){
+        return view('nurses.nurse_profile');
+    }
+    public function updatePatientProfile(Request $request){
+        //storing Image in the public directory
+        $photo= $request->file('profile_photo');
+        $user_id= $request->patient_id;
+        // dd($user_id);
+        $user= User::find($user_id);
+        if($photo){
+            $imageExtension = $photo->extension();
+            $photoName = "profile_image".$user_id.'.'.$imageExtension;
+            $path=$photo->storeAs('profilePhotos',$photoName,'public');
+            $user->profile_photo = $photoName;
+        }
+
+        $user->name =  $request->name;
+        $user->email = $request->get('email');
+        $user->date_of_birth = $request->get('date_of_birth');
+        $user->phone_number = $request->get('phone_number');
+        $user->city = $request->get('city');
+        $user->save();
+
+        return redirect('/patientProfile')->with('successMessage', 'Profile has been updated!')->with('user',$user);
     }
 }

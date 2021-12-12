@@ -25,6 +25,11 @@
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }}">
+    
+    <script type="text/javascript" src="{{asset('assets/assets2/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="{{asset('css/jquery.dataTables.min.css')}}">
+    <link href="{{ asset('css/doctor/doctor.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -72,10 +77,10 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{asset("storage/profilePhotos/".Auth::user()->profile_photo)}}" width='140' height='200' class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">John Doe</a>
+                    <a href="#" class="d-block">{{Auth::user()->name}}</a>
                 </div>
             </div>
 
@@ -107,13 +112,19 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="/patients" class="nav-link">
+                                <a href="/getpatient" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>View All Patients</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="/vitals" class="nav-link">
+                                <a href="/patientsWaiting" class="nav-link">
+                                  <i class="far fa-circle nav-icon"></i>
+                                  <p>Patients in Waiting Room</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/getvitals" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Patients Vitals</p>
                                 </a>
@@ -124,15 +135,19 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-table"></i>
                             <p>
-                                More Data
+                                Profile
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="/nurseEditProfile" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>XXXXXXXX</p>
+                                    <p>Edit Profile</p>
+                                </a>
+                                <a href="/patientProfile" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Edit Patient's Profile</p>
                                 </a>
                             </li>
                         </ul>
@@ -167,7 +182,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+{{-- <script src="plugins/jquery/jquery.min.js"></script> --}}
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->

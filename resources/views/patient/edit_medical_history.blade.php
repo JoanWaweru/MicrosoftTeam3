@@ -20,7 +20,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card" style="background: #2f3037; margin-top:15px;">
+                {{-- <div class="card" style="background: #2f3037; margin-top:15px;">
                     <div class="card-header">{{ __('Update Medical History') }}</div>
 
                     <div class="card-body">
@@ -114,7 +114,7 @@
                             </div>
                         </form>
                     </div>
-                </div>
+                </div> --}}
                 <div class="card" style="background: #2f3037; margin-top:15px; margin-bottom:15px;">
                     <div class="card-header">{{ __('Update Emergency Contact') }}</div>
 
