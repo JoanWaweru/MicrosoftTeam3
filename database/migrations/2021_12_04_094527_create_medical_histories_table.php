@@ -20,7 +20,6 @@ class CreateMedicalHistoriesTable extends Migration
             $table->string('medical_problems');
             $table->string('allergies');
             $table->string('medication');
-            $table->string('patients_id');//acts as a reference in the nurses module
             $table->foreignId('emergency_contact_id')->references('id')->on('emergency_contacts');
             $table->foreignId('patient_id')->references('id')->on('users');
             $table->timestamps();

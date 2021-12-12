@@ -22,12 +22,11 @@
     <section class="content">
         <div class="content">
             @php
-    $name=$email=$phone_number=$profile_photo=$city=$id=$date_of_birth="";
-    if (isset($user)) {
-        $id = $user->id;
+    $name=$email=$phone_number=$profile_photo=$city="";
+    $user=Auth::user();
+    if ($user!=null) {
         $name = $user->name;
         $email = $user->email;
-        $date_of_birth = $user->date_of_birth;
         $phone_number = $user->phone_number;
         $profile_photo = $user->profile_photo;
         $city = $user->city;
@@ -36,30 +35,17 @@
         <div class="container-fluid">
             <div class="row justify-content-center">
               <div class="col-md-8">
-                <form method="POST" action={{ route('updatePatientProfile') }} enctype="multipart/form-data">
+                <form method="POST" action={{ route('updateNurseProfile') }} enctype="multipart/form-data">
                     <div class="card">
-                      <div class="card-header">{{ __('Update ') }}</div>
+                      <div class="card-header">{{ __('Update Medical History') }}</div>
                       <div class="card-body" style="background-image: {{ asset("assets/images/category-2.jpg")}};">
                          
                               @csrf
                                     <div class="form-group row">
-                                      <label for="patient_id" class="col-md-4 col-form-label text-md-right">{{ __('Patient Id') }}</label>
-
-                                      <div class="col-md-6">
-                                          <input id="patient_id" type="text" class="form-control @error('patient_id') is-invalid @enderror" name="patient_id" required value="{{ $id}}" autocomplete="patient_id" autofocus>
-
-                                          @error('patient_id')
-                                          <span class="invalid-feedback" role="alert">
-                                              <strong>{{ $message }}</strong>
-                                          </span>
-                                          @enderror
-                                      </div>
-                                  </div>
-                                    <div class="form-group row">
                                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
         
                                         <div class="col-md-6">
-                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" required value="{{ $name}}" autocomplete="name" autofocus>
+                                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value={{ $user->name}} required autocomplete="name" autofocus>
         
                                             @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -72,7 +58,7 @@
                                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
         
                                         <div class="col-md-6">
-                                            <input id="city" type="text" class="form-control @error('name') is-invalid @enderror" name="city" style="overflow: visible;" value={{ $city}}>
+                                            <input id="city" type="text" class="form-control @error('name') is-invalid @enderror" name="city" style="overflow: visible;" value={{ $user->city}}>
         
                                             @error('city')
                                             <span class="invalid-feedback" role="alert">
@@ -86,7 +72,7 @@
                                         <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Phone Number') }}</label>
         
                                         <div class="col-md-6">
-                                            <input id="phone_number" type="text" class="form-control @error('name') is-invalid @enderror" name="phone_number" value={{ $phone_number}}  >
+                                            <input id="phone_number" type="text" class="form-control @error('name') is-invalid @enderror" name="phone_number" value={{ $user->phone_number}}  >
         
                                             @error('phone_number')
                                             <span class="invalid-feedback" role="alert">
@@ -100,7 +86,7 @@
                                         <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-mail Address') }}</label>
         
                                         <div class="col-md-6">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email }}" required autocomplete="email">
+                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value={{ $user->email }} required autocomplete="email">
         
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -114,7 +100,7 @@
                                         <label for="date_of_birth" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
         
                                         <div class="col-md-6">
-                                            <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value={{ $date_of_birth }} required autocomplete="date">
+                                            <input id="date_of_birth" type="date" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value={{ $user->date_of_birth }} required autocomplete="date">
         
                                             @error('date_of_birth')
                                             <span class="invalid-feedback" role="alert">
@@ -128,7 +114,7 @@
                                         <label for="profile_photo" class="col-md-4 col-form-label text-md-right">{{ __('Upload new profile') }}</label>
         
                                         <div class="col-md-6">
-                                            <input id="formFileSm" type="file" class="form-control-sm" name="profile_photo" value={{ $profile_photo }}>
+                                            <input id="formFileSm" type="file" class="form-control-sm" name="profile_photo" value={{ $user->profile_photo }}>
                                         </div>
                                     </div>
         
@@ -152,4 +138,3 @@
     </section>
     <script src="{{asset('js/doctor/patients.js')}}"></script>
 @endsection
-  

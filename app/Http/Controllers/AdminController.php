@@ -31,14 +31,20 @@ class AdminController extends Controller
 
     public function roles()
     {
-        $user = DB::select('select * from users where role != "Patient"');
+        $user= User::whereHas('roles', function($role) {
+            $role->where('name', '!=', 'patient');
+        })->get();
+        
         return view('admin.roles',['user'=>$user]);
     }
 
     public function registeredStaff()
     {
 //        $user= User::where('role',$role)->get();
-        $user = DB::select('select * from users where role != "Patient"');
+        // $user = DB::select('select * from users where role != "Patient"');
+        $user= User::whereHas('roles', function($role) {
+            $role->where('name', '!=', 'patient');
+        })->get();
         return view('admin.registered_staff',['user'=>$user]);
 //        return view('admin/registered_staff');
     }

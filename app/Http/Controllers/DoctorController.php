@@ -78,6 +78,8 @@ class DoctorController extends Controller
         return view('doctors.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'succesMessage'=>"Medical History successfully updated"]);
     }
 
+    
+
     public function editMedicalRecord($medicalRecordId,Request $request){
         $medicalRecord = MedicalRecord::find($medicalRecordId);
         return view('doctors.update_medical_record',['medicalRecord'=>$medicalRecord]);

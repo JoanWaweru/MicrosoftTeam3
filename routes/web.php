@@ -45,22 +45,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('users',\App\Http\Controllers\UserAdminController::class);
 });
 
-//Doctor Routes
-Route::middleware(['auth', 'role:doctor'])->group(function () {
-    Route::get('/doctor_landing', [DoctorController::class, 'index'])->name('doctor_landing');
-    Route::get('/patients', [DoctorController::class,'patients']);
-    Route::get('/patients_waiting', [DoctorController::class,'patientsWaiting']);
-    Route::get('/showMedicalRecord/{id}',[DoctorController::class,'medicalRecord']);
-    Route::get('/showMedicalHistory/{id}',[DoctorController::class,'medicalHistory']);
-    Route::get('/editMedicalHistory/{id}',[DoctorController::class,'editMedicalHistory'])->name('editMedicalHistory');
-    Route::post('/updateMedicalHistory',[DoctorController::class,'updateMedicalHistory'])->name('updateMedicalHistory');
-    Route::post('/updateMedicalRecord',[DoctorController::class,'updateMedicalRecord'])->name('updateMedicalRecord');
-    Route::get('/editMedicalRecord/{id}',[DoctorController::class,'editMedicalRecord'])->name('editMedicalRecord');
-    Route::get('/vitals', [DoctorController::class,'vitals']);
-    Route::get('/history', [DoctorController::class,'history']);
-
-});
-
 Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/myprofile', [UserController::class, 'show'])->name('myprofile');
@@ -77,27 +61,55 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
 });
 
+//Doctor Routes
+Route::middleware(['auth', 'role:doctor'])->group(function () {
+    Route::get('/doctor_landing', [DoctorController::class, 'index'])->name('doctor_landing');
+    Route::get('/patients', [DoctorController::class,'patients']);
+    Route::get('/patients_waiting', [DoctorController::class,'patientsWaiting']);
+    Route::get('/showMedicalRecord/{id}',[DoctorController::class,'medicalRecord']);
+    Route::get('/showMedicalHistory/{id}',[DoctorController::class,'medicalHistory']);
+    Route::get('/editMedicalHistory/{id}',[DoctorController::class,'editMedicalHistory'])->name('editMedicalHistory');
+    Route::post('/updateMedicalHistory',[DoctorController::class,'updateMedicalHistory'])->name('updateMedicalHistory');
+    Route::post('/updateMedicalRecord',[DoctorController::class,'updateMedicalRecord'])->name('updateMedicalRecord');
+    Route::get('/editMedicalRecord/{id}',[DoctorController::class,'editMedicalRecord'])->name('editMedicalRecord');
+    Route::get('/vitals', [DoctorController::class,'vitals']);
+    Route::get('/history', [DoctorController::class,'history']);
+
+});
 //nurse routes
 Route::middleware(['auth', 'role:nurse'])->group(function () {
-    Route::get('/myprofile', [UserController::class, 'show'])->name('myprofile');
-    Route::get('/myprofileEdit', [UserController::class, 'edit'])->name('myprofileEdit');
-    Route::post('/myprofileUpdate/{patient_id}', [UserController::class, 'update'])->name('myprofileUpdate');
     Route::get('/nurse_landing', [NurseController::class, 'index'])->name('nurse_landing');
+    Route::get('/patientsWaiting', [NurseController::class,'patientsWaiting']);
+    Route::get('/medicalRecord/{id}',[NurseController::class,'medicalRecord']);
+    Route::get('/medicalHistory/{id}',[NurseController::class,'medicalHistory']);
+    Route::get('/editMedicalHistory/{id}',[NurseController::class,'editMedicalHistory'])->name('editMedicalHistory');
+    Route::get('/addMedicalHistory/{id}',[NurseController::class,'addMedicalHistory'])->name('addMedicalHistory');
+    Route::post('/updateMedicalHistory',[NurseController::class,'updateMedicalHistory'])->name('updateMedicalHistory');
+    Route::post('/saveMedicalHistory',[NurseController::class,'saveMedicalHistory'])->name('saveMedicalHistory');
+    Route::post('/updateNurseProfile', [NurseController::class, 'updateProfile'])->name('updateNurseProfile');
+    Route::get('/nurseEditProfile', [NurseController::class, 'editProfile'])->name('myprofile');
     Route::get('/getvitals', [NurseController::class, 'vitalspage'])->name('vitals');
     Route::post('/sendvitals', [NurseController::class, 'vitals'])->name('sendvitals');
-    Route::get('/insertPatientMedicalHistory', [NurseController::class, 'insertPatientMedicalHistory'])->name('insertPatientMedicalHistory');
-    Route::post('/createPatientMedicalHistory', [NurseController::class, 'createPatientMedicalHistory'])->name('createPatientMedicalHistory');
-    Route::post('/updatePatientMedicalHistory', [NurseController::class, 'updatePatientMedicalHistory'])->name('updatePatientMedicalHistory');
-    Route::post('/updatePatientMedicalData', [NurseController::class, 'updatePatientMedicalData'])->name('updatePatientMedicalData');
-    Route::get('/getPatientMedicalHistory', [NurseController::class, 'getPatientMedicalHistory'])->name('getPatientMedicalHistory');
+    Route::get('/patientProfile', [NurseController::class, 'patientProfile'])->name('patientProfile');
+    Route::post('/updatePatientProfile', [NurseController::class, 'updatePatientProfile'])->name('updatePatientProfile');
     Route::get('/getpatient', [NurseController::class, 'getpatient'])->name('getpatient');
-    Route::get('/editPatientHistory/{id}', [NurseController::class, 'editPatientHistory'])->name('editPatientHistory');
-    Route::get('/editPatientData/{id}', [NurseController::class, 'editPatientData'])->name('editPatientData');
+    
+
+
+
+    // Route::get('/myprofileEdit', [UserController::class, 'edit'])->name('myprofileEdit');
+    // Route::post('/myprofileUpdate/{patient_id}', [UserController::class, 'update'])->name('myprofileUpdate');
+    // Route::get('/insertPatientMedicalHistory', [NurseController::class, 'insertPatientMedicalHistory'])->name('insertPatientMedicalHistory');
+    // Route::post('/createPatientMedicalHistory', [NurseController::class, 'createPatientMedicalHistory'])->name('createPatientMedicalHistory');
+    // Route::post('/updatePatientMedicalHistory', [NurseController::class, 'updatePatientMedicalHistory'])->name('updatePatientMedicalHistory');
+    // Route::post('/updatePatientMedicalData', [NurseController::class, 'updatePatientMedicalData'])->name('updatePatientMedicalData');
+    // Route::get('/getPatientMedicalHistory/{patient_id}', [NurseController::class, 'getPatientMedicalHistory'])->name('getPatientMedicalHistory');
+    // Route::get('/editPatientHistory/{id}', [NurseController::class, 'editPatientHistory'])->name('editPatientHistory');
     Route::get('/trainFace', [NurseController::class, 'trainFace'])->name('trainFace');//emergency_contact
     Route::get('/emergency_contact/{id}', [NurseController::class, 'emergency_contact'])->name('emergency_contact');
 });
    
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 

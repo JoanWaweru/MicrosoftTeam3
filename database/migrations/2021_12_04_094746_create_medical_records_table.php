@@ -20,9 +20,8 @@ class CreateMedicalRecordsTable extends Migration
             $table->String('temperature');
             $table->String('blood_pressure');
             $table->String('symptoms');
-            $table->String('patients_id');//acts as a reference in the nurses module
             $table->String('condition_image_path')->nullable();
-            $table->foreignId('doctor_response_id')->references('id')->on('doctor_responses')->nullable();
+            $table->foreignId('doctor_response_id')->nullable()->references('id')->on('doctor_responses');
             $table->foreignId('patient_id')->references('id')->on('users');
             $table->timestamps();
         });

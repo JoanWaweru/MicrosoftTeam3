@@ -35,7 +35,7 @@
               </tr>
           </thead>
           <tbody>
-            @foreach ($patients as $patient)
+            @foreach ($waitingPatients as $patient)
             @php
               $medicalRecordUrl= "/medicalRecord/{$patient->id}";
               $medicalHistoryUrl= "/medicalHistory/{$patient->id}";

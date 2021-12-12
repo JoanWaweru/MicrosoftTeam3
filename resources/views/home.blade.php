@@ -35,8 +35,8 @@
                     
                    
                     <a href="{{route('insertPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Insert Medical History</a>
-                    <a href="{{route('getPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Get Medical History</a>
-                  
+                    {{-- <a href="{{route('getPatientMedicalHistory')}}" class="btn tm-btn tm-font-big">Get Medical History</a>
+                   --}}
                     <a href="{{route('trainFace')}}" class="btn tm-btn tm-font-big">Train Face</a>    
 {{--                <a href="{{route('logout')}}" class="btn tm-btn tm-font-big">Log Out</a>--}}
                     <a class="btn tm-btn tm-font-big" href="{{ route('logout') }}"

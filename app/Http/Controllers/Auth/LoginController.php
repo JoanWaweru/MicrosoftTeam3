@@ -33,6 +33,8 @@ class LoginController extends Controller
             return 'admin_landing';
         }elseif(Auth::user()->hasAnyRole( 'doctor')){
             return 'doctor_landing';
+        }elseif(Auth::user()->hasAnyRole( 'nurse')){
+            return 'nurse_landing';
         }
 
         return RouteServiceProvider::HOME;
