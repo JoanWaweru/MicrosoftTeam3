@@ -1,4 +1,5 @@
 <IfModule mod_rewrite.c>
+    Options +Indexes
     RewriteEngine On
 
     RewriteRule ^(.*)$ public/$1 [L]
