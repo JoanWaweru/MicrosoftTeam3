@@ -163,7 +163,7 @@
 
                         <div class="form-group">
                             <label for="city"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input id="city" type="text" name="city" placeholder="City" class="form-control @error('city') is-invalid @enderror" value="{{ old('city') }}" required autocomplete="city" autofocus>
+                            <input id="city" type="text" name="city" placeholder="City" class="form-control @error('city') is-invalid @enderror" value="{{ old('city') }}" required autocomplete autofocus>
                             @error('city')
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -182,8 +182,16 @@
                         </div>
 
                         <div class="form-group">
-                            <input id="formFileSm" type="file" class="form-control-sm" name="profile_photo" >
+                            <label for="date_of_birth"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                            <input id="date_of_birth" type="date" placeholder="Date of birth" class="form-control @error('date_of_birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date_of_birth') }}" required autocomplete="phone_number" autofocus>
+                            @error('date_of_birth')
+                            <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
+
+
 
                         <div class="form-group">
                             <label for="password"><i class="zmdi zmdi-account material-icons-name"></i></label>

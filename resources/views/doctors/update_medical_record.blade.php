@@ -32,6 +32,11 @@
                 $prescription=$medicalRecord->prescription;
                 $comment=$medicalRecord->comment;
                }
+               if(isset($doctorResponse)){
+                $diagnosis= $doctorResponse->diagnosis;
+                $prescription= $doctorResponse->prescription;
+                $comment= $doctorResponse->comment;
+               }
            @endphp
                <div class="container-box">
                    <center><h1>Medical Record</h1></center>
@@ -58,7 +63,9 @@
                        <p class="value">{{$medicalRecord->symptoms}} </p>
                    </div>
                    <div class="image-box">
-                       <img src="{{$link}}" alt="">
+
+                       <img src="{{asset($link)}}" alt="" style="display: block; margin: 2px auto;">
+                       <p class="key" style="display:block; margin-left:370px; ">Condition Image</p>
                     </div> 
                    
                </div>
@@ -71,7 +78,7 @@
                     <label for="diagnosis" class="col-md-4 col-form-label text-md-right">{{ __('Diagnosis') }}</label>
 
                     <div class="col-md-6">
-                        <textarea id="diagnosis" type="text" class="form-control @error('diagnosis') is-invalid @enderror" name="diagnosis" required>
+                        <textarea id="diagnosis" type="text" class="form-control @error('diagnosis') is-invalid @enderror" name="diagnosis" required="required">
                         {{$diagnosis}}
                         </textarea>   
                         @error('diagnosis')
@@ -85,7 +92,7 @@
                     <label for="prescription" class="col-md-4 col-form-label text-md-right">{{ __('Prescription') }}</label>
 
                     <div class="col-md-6">
-                        <textarea id="prescription" type="text" class="form-control @error('prescription') is-invalid @enderror" name="prescription" required>
+                        <textarea id="prescription" type="text" class="form-control @error('prescription') is-invalid @enderror" name="prescription" required="required">
                             {{$prescription}}
                         </textarea>   
                         @error('prescription')
@@ -99,7 +106,7 @@
                     <label for="comment" class="col-md-4 col-form-label text-md-right">{{ __('Comment') }}</label>
 
                     <div class="col-md-6">
-                        <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" required>
+                        <textarea id="comment" type="text" class="form-control @error('comment') is-invalid @enderror" name="comment" required="required">
                             {{$comment}}
                         </textarea>
 
