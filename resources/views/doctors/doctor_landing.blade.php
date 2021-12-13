@@ -42,9 +42,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>55<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{$waitingPatients}}</h3>
 
-                <p>xxxxxxxxxxxxxxx</p>
+                <p>Waiting Patients</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -57,9 +57,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3></h3>
+                <h3>{{$doctors}}</h3>
 
-                <p>Registered Patients</p>
+                <p>Registered Doctors</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -72,9 +72,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{$nurses}}</h3>
 
-                <p>xxxxxxxxxxxx</p>
+                <p>Registered Nurses</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>

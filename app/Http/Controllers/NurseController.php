@@ -13,7 +13,29 @@ class NurseController extends Controller
 {
     public function index()
     {
-        return view('nurses.nurse_landing');
+        $patients= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'patient');
+        })->count();
+
+        $doctors= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'doctor');
+        })->count();
+
+        $nurses= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'nurse');
+        })->count();
+
+        $medicalRecords= MedicalRecord::where('doctor_response_id',null)->get();
+        $waitingPatientsId= array();
+
+        foreach ($medicalRecords as $medicalRecord) {
+            if (!in_array($medicalRecord->patient_id, $waitingPatientsId)) {
+                array_push($waitingPatientsId,$medicalRecord->patient_id);
+            }
+        }
+        $waitingPatients= count($waitingPatientsId);
+
+        return view('nurses/nurse_landing',compact('patients','waitingPatients','nurses','doctors'));
     }
 
     public function showProfile(User $user)
@@ -44,7 +66,7 @@ class NurseController extends Controller
             'city'=>'required',
             'date_of_birth'=>'required'
         ]);
-//        $user = User::where('id',$id)->first();
+
 
         //storing Image in the public directory
         $photo= $request->file('profile_photo');
@@ -103,7 +125,8 @@ class NurseController extends Controller
 
     public function editMedicalHistory($medicalHistoryId,Request $request){
         $medicalHistory = MedicalHistory::find($medicalHistoryId);
-        return view('nurses.edit_medical_history',['medicalHistory'=>$medicalHistory]);
+        $emergencyContact = EmergencyContact::find($medicalHistory->emergency_contact_id);
+        return view('nurses.edit_medical_history',['medicalHistory'=>$medicalHistory,'emergencyContact'=>$emergencyContact]);
     }
 
     public function addMedicalHistory($patientId,Request $request){

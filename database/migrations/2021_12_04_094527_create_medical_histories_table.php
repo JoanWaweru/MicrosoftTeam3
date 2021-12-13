@@ -20,7 +20,7 @@ class CreateMedicalHistoriesTable extends Migration
             $table->string('medical_problems');
             $table->string('allergies');
             $table->string('medication');
-            $table->foreignId('emergency_contact_id')->references('id')->on('emergency_contacts');
+            $table->foreignId('emergency_contact_id')->nullable()->references('id')->on('emergency_contacts');
             $table->foreignId('patient_id')->references('id')->on('users');
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -66,14 +67,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role= Role::find(2);
+        $patient='Patient';
+        $status='Active';
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'phone_number' => $data['phone_number'],
             'city' => $data['city'],
-            'role' => $data['role'],
-            'profile_photo' => $data['profile_photo'],
+            'date_of_birth' => $data['date_of_birth'],
+            'role' => $patient,
+            'status' => $status,
             'password' => Hash::make($data['password']),
-        ]);
+        ])->assignRole($role);
     }
 }

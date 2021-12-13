@@ -68,8 +68,10 @@ Route::middleware(['auth', 'role:doctor'])->group(function () {
     Route::get('/patients_waiting', [DoctorController::class,'patientsWaiting']);
     Route::get('/showMedicalRecord/{id}',[DoctorController::class,'medicalRecord']);
     Route::get('/showMedicalHistory/{id}',[DoctorController::class,'medicalHistory']);
-    Route::get('/editMedicalHistory/{id}',[DoctorController::class,'editMedicalHistory'])->name('editMedicalHistory');
-    Route::post('/updateMedicalHistory',[DoctorController::class,'updateMedicalHistory'])->name('updateMedicalHistory');
+    Route::get('/EditMedicalHistory/{id}',[DoctorController::class,'EditMedicalHistory'])->name('EditMedicalHistory');
+    Route::get('/AddMedicalHistory/{id}',[DoctorController::class,'AddMedicalHistory'])->name('AddMedicalHistory');
+    Route::post('/UpdateMedicalHistory',[DoctorController::class,'UpdateMedicalHistory'])->name('UpdateMedicalHistory');
+    Route::post('/SaveMedicalHistory',[DoctorController::class,'SaveMedicalHistory'])->name('SaveMedicalHistory');
     Route::post('/updateMedicalRecord',[DoctorController::class,'updateMedicalRecord'])->name('updateMedicalRecord');
     Route::get('/editMedicalRecord/{id}',[DoctorController::class,'editMedicalRecord'])->name('editMedicalRecord');
     Route::get('/vitals', [DoctorController::class,'vitals']);

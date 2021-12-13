@@ -23,13 +23,15 @@
         <div class="content">
             @php
             $height=$weight=$medicalProblems=$allergies=$medication=$id="";
-            if ($medicalHistory!=null) {
+            if (isset($medicalHistory)) {
                 $id= $medicalHistory->id;
                 $height = $medicalHistory->height;
                 $weight = $medicalHistory->weight;
                 $medicalProblems = $medicalHistory->medical_problems;
                 $allergies = $medicalHistory->allergies;
                 $medication = $medicalHistory->medication;
+            }else if(isset($patientId)){
+                $id= $patientId;
             }
         @endphp
         <div class="container-fluid">
@@ -40,7 +42,10 @@
                       <div class="card-header">{{ __('Update Medical History') }}</div>
       
                       <div class="card-body" style="background-image: {{ asset("assets/images/category-2.jpg")}};">
-                          <form method="POST" action={{ route('updateMedicalHistory') }} enctype="multipart/form-data">
+                    @php
+                        $action= isset($patientId)? 'SaveMedicalHistory':'UpdateMedicalHistory';
+                    @endphp
+                    <form method="POST" action={{ route($action) }} enctype="multipart/form-data">                        
                               @csrf
                               </div>
                               <input type="text" name="id" value="{{$id}}" style="display:none;">

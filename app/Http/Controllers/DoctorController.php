@@ -19,7 +19,34 @@ class DoctorController extends Controller
             $role->where('name', '=', 'patient');
         })->count();
 
-        return view('doctors/doctor_landing',compact('patients'));
+        $doctors= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'doctor');
+        })->count();
+
+        $nurses= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'nurse');
+        })->count();
+
+        $medicalRecords= MedicalRecord::where('doctor_response_id',null)->get();
+        $waitingPatientsId= array();
+
+        foreach ($medicalRecords as $medicalRecord) {
+            if (!in_array($medicalRecord->patient_id, $waitingPatientsId)) {
+                array_push($waitingPatientsId,$medicalRecord->patient_id);
+            }
+        }
+        $waitingPatients= count($waitingPatientsId);
+
+        return view('doctors/doctor_landing',compact('patients','waitingPatients','nurses','doctors'));
+    }
+
+    public function patients(){
+        //retrieve patients from the db using the role as a patient
+        $patients= User::whereHas('roles', function($role) {
+            $role->where('name', '=', 'patient');
+        })->get();
+       
+        return view('doctors/patients' , ['patients' => $patients]);
     }
 
     public function patientsWaiting(){
@@ -61,7 +88,7 @@ class DoctorController extends Controller
 
         $medicalHistory = MedicalHistory::where('patient_id','=',$patient_id)->first();
         $emergencyContact = $medicalHistory==null? null:EmergencyContact::find($medicalHistory->emergency_contact_id);
-        return view('doctors.medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact]);
+        return view('doctors.medical_history',['medicalHistory'=>$medicalHistory, 'emergencyContact'=>$emergencyContact,'patient_id'=>$patient_id]);
     }
 
     public function medicalRecord($patient_id){
@@ -74,7 +101,12 @@ class DoctorController extends Controller
         $medicalHistory = MedicalHistory::find($medicalHistoryId);
         return view('doctors.edit_medical_history',['medicalHistory'=>$medicalHistory]);
     }
-    public function updateMedicalHistory(Request $request){
+
+    public function AddMedicalHistory($patientId){
+        return view('doctors.edit_medical_history',['patientId'=>$patientId]);
+    }
+
+    public function UpdateMedicalHistory(Request $request){
         $id= $request->id;
         $medicalHistory = MedicalHistory::find($id);
         $medicalHistory->weight= $request->weight;
@@ -83,6 +115,20 @@ class DoctorController extends Controller
         $medicalHistory->medical_problems= $request->medical_problems;
         $medicalHistory->allergies= $request->allergies;
         $medicalHistory->update();
+
+        return view('doctors.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'succesMessage'=>"Medical History successfully updated"]);
+    }
+
+    public function SaveMedicalHistory(Request $request){
+        $id= $request->id;
+        $medicalHistory = new MedicalHistory();
+        $medicalHistory->weight= $request->weight;
+        $medicalHistory->height= $request->height;
+        $medicalHistory->medication= $request->medication;
+        $medicalHistory->medical_problems= $request->medical_problems;
+        $medicalHistory->allergies= $request->allergies;
+        $medicalHistory->patient_id= $request->id;
+        $medicalHistory->save();
 
         return view('doctors.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'succesMessage'=>"Medical History successfully updated"]);
     }
@@ -105,14 +151,13 @@ class DoctorController extends Controller
         $medicalRecord->doctor_response_id=$doctorResponse->id; 
         $medicalRecord->update();
 
-        return view('doctors.update_medical_record', ['medicalHistory'=>$medicalRecord, 'succesMessage'=>"Medical History successfully updated"]);
+        return view('doctors.update_medical_record', ['medicalRecord'=>$medicalRecord, 'doctorResponse'=>$doctorResponse, 'succesMessage'=>"Medical Record successfully updated"]);
     }
 
     public function updateDoctor(Request $request, $id)
     {
         $user = User::findOrFail($id);
         $request->validate([
-            'id'=>'required',
             'name'=>'required',
             'email'=>'required',
             'phone_number'=>'required',
@@ -129,7 +174,7 @@ class DoctorController extends Controller
             $user->profile_photo = $photoName;
         }
 
-        $user->id=$request->get('id');
+        $user->id=$id;
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
         $user->phone_number = $request->get('phone_number');
