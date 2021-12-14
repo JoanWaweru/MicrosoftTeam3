@@ -276,4 +276,16 @@ class NurseController extends Controller
 
         return redirect('/patientProfile')->with('successMessage', 'Profile has been updated!')->with('user',$user);
     }
+
+    public function identify_face(){
+        return view('nurses/identify');
+    }
+
+    public function patients($id){
+        //retrieve patients from the db using the role as a patient
+        //dd($id);
+        $patient= User::find($id);
+        // dd($patient);
+        return view('nurses/showPatients' , ['patient' => $patient]);
+    }
 }

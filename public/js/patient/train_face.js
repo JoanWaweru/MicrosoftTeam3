@@ -71,31 +71,32 @@ closeCamera.onclick=function () {
     cameraEnd();
 };
 
-takePhoto.onclick= function () {
-    takePhotoContainer.classList.remove('hide-element');
-    uploadPhotoContainer.classList.add('hide-element');
-    profilePhotoContainer.classList.add('hide-element');
-    uploadOption=2;
-}
-uploadPhoto.onclick= function () {
-    uploadPhotoContainer.classList.remove('hide-element');
-    takePhotoContainer.classList.add('hide-element');
-    profilePhotoContainer.classList.add('hide-element');
-    uploadOption=1;
-}
-profilePhoto.onclick = function () {
-    profilePhotoContainer.classList.remove('hide-element');
-    uploadPhotoContainer.classList.add('hide-element');
-    takePhotoContainer.classList.add('hide-element');
-    uploadOption=3;
-}
+// takePhoto.onclick= function () {
+//     takePhotoContainer.classList.remove('hide-element');
+//     uploadPhotoContainer.classList.add('hide-element');
+//     profilePhotoContainer.classList.add('hide-element');
+//     uploadOption=2;
+// }
+// uploadPhoto.onclick= function () {
+//     uploadPhotoContainer.classList.remove('hide-element');
+//     takePhotoContainer.classList.add('hide-element');
+//     profilePhotoContainer.classList.add('hide-element');
+//     uploadOption=1;
+// }
+// profilePhoto.onclick = function () {
+//     profilePhotoContainer.classList.remove('hide-element');
+//     uploadPhotoContainer.classList.add('hide-element');
+//     takePhotoContainer.classList.add('hide-element');
+//     uploadOption=3;
+// }
 
-clickUploadPhoto.onclick = function () {
-    uploadedPhoto.click();
-}
+// clickUploadPhoto.onclick = function () {
+//     uploadedPhoto.click();
+// }
 
 // Using Jquery and AJAX to make requests directly to the server
 $(document).ready(function(){
+
     $("#train-button").click(function(){
         switch (uploadOption) {
             case 1:

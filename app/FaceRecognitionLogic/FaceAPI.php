@@ -223,7 +223,7 @@ class FaceAPI {
     }
     public function deletePerson(){
         $personGroupId= "mhealth_users";
-        $personId="ecae8ade-161c-4cd5-aaeb-95c7b1fe1f64"; 
+        $personId="60bb33b0-e091-427f-9e8d-74e797ae2799"; 
         $request = new Http_Request2($this->uriBase."persongroups/".$personGroupId."/persons/".$personId);
         $url = $request->getUrl();
 
@@ -248,8 +248,8 @@ class FaceAPI {
     }
     public function deleteFace(){
         $personGroupId= "mhealth_users";
-        $personId="d769bf6a-a2ce-48fa-a0d5-f7b60c69ae26"; 
-        $persistedFaceId="4cec52e0-43a2-4786-8b03-a87cf0800e93";
+        $personId="af4366bb-a67f-4102-a72d-70d74f578cf0"; 
+        $persistedFaceId="47bd2e25-fb0a-4d46-b9de-d0f1bf037b74";
         $request = new Http_Request2($this->uriBase.'persongroups/'.$personGroupId.'/persons/'.$personId.'/persistedFaces/'.$persistedFaceId);
         $url = $request->getUrl();
 

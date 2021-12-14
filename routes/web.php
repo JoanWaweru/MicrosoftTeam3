@@ -123,7 +123,10 @@ Route::get('/deletePerson', [TrainFace::class, 'deletePerson']);
 Route::get('/deleteFace', [TrainFace::class, 'deleteFace']);
 Route::get('/trainPersonGroup', [TrainFace::class, 'trainPersonGroup']);
 
+Route::get('/identify_face', [NurseController::class, 'identify_face'])->name('identify_face');
+Route::post('/identify_face', [TrainFace::class, 'identifyFace']);
 
+Route::get('/showPatients/{id}', [NurseController::class,'patients']);
 
 
 

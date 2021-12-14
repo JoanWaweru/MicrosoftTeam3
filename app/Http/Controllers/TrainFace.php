@@ -116,10 +116,10 @@ class TrainFace extends Controller
             return "No Face Detected";
         }
          if (isset($faceDetectionResult[0]->faceId)) {
-    
+            
             #If Face Detected successfully  
             #Check if a person is created for this particular user in the API 
-            $face = FaceDetail::where('user_id', Auth::user()->id)->first();
+            $face = FaceDetail::where('patient_id', Auth::user()->id)->first();
 
             if ($face!=null) {
                 // return "face not null called";
@@ -183,7 +183,7 @@ class TrainFace extends Controller
         $newFaceDetail->face_id= $persistedFaceId;
         $newFaceDetail->person_id=$personId;
         $newFaceDetail->training_photo_path=$path;
-        $newFaceDetail->user_id=$user_id;
+        $newFaceDetail->patient_id=$user_id;
         $newFaceDetail->save();
         return "success";
     }
@@ -245,10 +245,11 @@ class TrainFace extends Controller
                 if (isset($response[0]->candidates[0]->personId)) {
                     $identifiedPersonId=$response[0]->candidates[0]->personId;
                     $identifiedFaceDetail= FaceDetail::where('person_id',$identifiedPersonId)->first();
-                    $identifiedUserId=$identifiedFaceDetail->user_id;
+                    $identifiedUserId=$identifiedFaceDetail->patient_id;
                     $identifiedUser= User::where('id',$identifiedUserId)->first();
-                    $identifiedUserFullName= $identifiedUser->first_name." ".$identifiedUser->last_name;
-                    //return $identifiedUserFullName;
+                    $identifiedUserFullName= $identifiedUser->name;
+                    $finalResponse= array("name"=>$identifiedUserFullName,"id"=>$identifiedUserId);
+                    return json_encode($finalResponse);
 
                     // #Checking if the user has answered the screening data questions for the day
                     // $date= now()->format('F')." ".now()->format('d')." ".now()->format('Y');
