@@ -98,7 +98,7 @@ Route::middleware(['auth', 'role:nurse'])->group(function () {
     Route::get('/patientProfile', [NurseController::class, 'patientProfile'])->name('patientProfile');
     Route::post('/updatePatientProfile', [NurseController::class, 'updatePatientProfile'])->name('updatePatientProfile');
     Route::get('/getpatient', [NurseController::class, 'getpatient'])->name('getpatient');
-    
+
 
 
 

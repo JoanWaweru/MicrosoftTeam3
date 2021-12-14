@@ -34,7 +34,7 @@ class AdminController extends Controller
         $user= User::whereHas('roles', function($role) {
             $role->where('name', '!=', 'patient');
         })->get();
-        
+
         return view('admin.roles',['user'=>$user]);
     }
 
@@ -49,9 +49,17 @@ class AdminController extends Controller
 //        return view('admin/registered_staff');
     }
 
-    public function addStaff()
+    public function addStaff(User $user=null)
     {
-        return view('admin/add_staff');
+        //$id=Auth::id();
+        //$user = User::where('id','=',$id)->first();
+        if($user!=null && Auth::id()->role=='admin')
+            $user_to_edit = $user;
+        else
+            $user_to_edit = Auth::id();
+        return view('admin.add_staff',['user'=>$user_to_edit]);
+
+        //return view('admin/add_staff');
     }
 
     public function registeredPatients()
