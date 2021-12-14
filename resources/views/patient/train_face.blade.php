@@ -27,4 +27,6 @@
  </div>   
  <script src="{{asset('js/patient/train_face.js')}}"></script>
  <script src="{{asset('js/patient/common.js')}}"></script>
+<script src="ihttps://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
  @endsection
