@@ -45,7 +45,7 @@ class DoctorController extends Controller
         $patients= User::whereHas('roles', function($role) {
             $role->where('name', '=', 'patient');
         })->get();
-       
+
         return view('doctors/patients' , ['patients' => $patients]);
     }
 
@@ -59,14 +59,14 @@ class DoctorController extends Controller
                 array_push($waitingPatientsId,$medicalRecord->patient_id);
             }
         }
-        
+
         return view('doctors/patients_waiting', ["waitingPatients"=>$waitingPatients]);
     }
 
     public function vitals(){
         return view('doctors/vitals');
     }
-    
+
     public function history(){
         return view('doctors/history');
     }
@@ -116,7 +116,9 @@ class DoctorController extends Controller
         $medicalHistory->allergies= $request->allergies;
         $medicalHistory->update();
 
-        return view('doctors.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'succesMessage'=>"Medical History successfully updated"]);
+        return view('doctors.medical_history', ['medicalHistory'=>$medicalHistory, 'succesMessage'=>"Medical History successfully updated"]);
+//        return redirect('/showMedicalHistory/{id}')->with('success', 'Profile has been updated!');
+
     }
 
     public function SaveMedicalHistory(Request $request){
@@ -133,7 +135,7 @@ class DoctorController extends Controller
         return view('doctors.edit_medical_history', ['medicalHistory'=>$medicalHistory, 'succesMessage'=>"Medical History successfully updated"]);
     }
 
-    
+
 
     public function editMedicalRecord($medicalRecordId,Request $request){
         $medicalRecord = MedicalRecord::find($medicalRecordId);
@@ -148,7 +150,7 @@ class DoctorController extends Controller
         $doctorResponse->diagnosis= $request->diagnosis;
         $doctorResponse->comment= $request->comment;
         $doctorResponse->save();
-        $medicalRecord->doctor_response_id=$doctorResponse->id; 
+        $medicalRecord->doctor_response_id=$doctorResponse->id;
         $medicalRecord->update();
 
         return view('doctors.update_medical_record', ['medicalRecord'=>$medicalRecord, 'doctorResponse'=>$doctorResponse, 'succesMessage'=>"Medical Record successfully updated"]);
@@ -182,5 +184,5 @@ class DoctorController extends Controller
 
         return redirect('/profile')->with('success', 'Profile has been updated!');
     }
-    
+
 }
