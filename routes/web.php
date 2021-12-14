@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserAdminController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\TrainFace;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\MedicalRecordController;
@@ -57,7 +58,7 @@ Route::middleware(['auth', 'role:patient'])->group(function () {
     Route::get('/medicalRecord', [MedicalRecordController::class, 'show'])->name('medicalRecord');
     Route::get('/medicalRecordNew', [MedicalRecordController::class, 'add'])->name('medicalRecordNew');
     Route::post('/medicalRecordAdd', [MedicalRecordController::class, 'save'])->name('medicalRecordAdd');
-
+   
     //Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
 });
 
@@ -114,9 +115,18 @@ Route::middleware(['auth', 'role:nurse'])->group(function () {
     Route::get('/emergency_contact/{id}', [NurseController::class, 'emergency_contact'])->name('emergency_contact');
 });
 Route::get('/trainFace', [UserController::class, 'trainFace'])->name('trainFace');
+Route::post('/train_face', [TrainFace::class, 'trainFace']);
 
+Route::get('/createPersonGroup', [TrainFace::class, 'createPersonGroup']);
+Route::get('/listPersons', [TrainFace::class, 'listPersons']);
+Route::get('/deletePerson', [TrainFace::class, 'deletePerson']);
+Route::get('/deleteFace', [TrainFace::class, 'deleteFace']);
+Route::get('/trainPersonGroup', [TrainFace::class, 'trainPersonGroup']);
 
+Route::get('/identify_face', [NurseController::class, 'identify_face'])->name('identify_face');
+Route::post('/identify_face', [TrainFace::class, 'identifyFace']);
 
+Route::get('/showPatients/{id}', [NurseController::class,'patients']);
 
 
 

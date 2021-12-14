@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Nurses' | Panel</title>
 
     <!-- Google Font: Source Sans Pro -->
@@ -172,6 +173,24 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-table"></i>
+                            <p>
+                                Patient
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="/identify_face" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Identify Patient</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

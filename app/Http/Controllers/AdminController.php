@@ -86,18 +86,17 @@ class AdminController extends Controller
 
     public function updateAdmin(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user_id = Auth::id();
+        $user = User::findOrFail($user_id);
         $request->validate([
-            'id'=>'required',
             'name'=>'required',
             'email'=>'required',
-            'phone_number'=>'required',
-            'profile_photo'=>'required',
+            'phone_number'=>'required'
         ]);
 
         //storing Image in the public directory
         $photo= $request->file('profile_photo');
-        $user_id = Auth::id();
+        
         if($photo){
             $imageExtension = $photo->extension();
             $photoName = "profile_image".$user_id.'.'.$imageExtension;
@@ -105,7 +104,7 @@ class AdminController extends Controller
             $user->profile_photo = $photoName;
         }
 
-        $user->id=$request->get('id');
+
         $user->name =  $request->get('name');
         $user->email = $request->get('email');
         $user->phone_number = $request->get('phone_number');
