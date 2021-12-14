@@ -40,7 +40,7 @@
                       <td>{{$users->name}}</td>
                       <td>{{$users->email}}</td>
                       <td>{{$users->role}}</td>
-                      <td> <a href={{ route('edit_staff')}} class="btn btn-primary" type="button">Edit</a></td>
+                      <td> <a href={{ route('edit_staff',$users->id)}} class="btn btn-primary" type="button">Edit</a></td>
                       <td> <a href={{ route('delete_staff',$users->id)}} class="btn btn-primary" type="button">Delete</a></td>
                   </tr>
               @endforeach

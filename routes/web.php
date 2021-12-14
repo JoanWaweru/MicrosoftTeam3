@@ -72,7 +72,7 @@ Route::middleware(['auth', 'role:doctor'])->group(function () {
     Route::get('/EditMedicalHistory/{id}',[DoctorController::class,'EditMedicalHistory'])->name('EditMedicalHistory');
     Route::get('/AddMedicalHistory/{id}',[DoctorController::class,'AddMedicalHistory'])->name('AddMedicalHistory');
     Route::post('/UpdateMedicalHistory',[DoctorController::class,'UpdateMedicalHistory'])->name('UpdateMedicalHistory');
-    Route::post('/SaveMedicalHistory',[DoctorController::class,'SaveMedicalHistory'])->name('SaveMedicalHistory');
+    //Route::post('/SaveMedicalHistory',[DoctorController::class,'SaveMedicalHistory'])->name('SaveMedicalHistory');
     Route::post('/updateMedicalRecord',[DoctorController::class,'updateMedicalRecord'])->name('updateMedicalRecord');
     Route::get('/editMedicalRecord/{id}',[DoctorController::class,'editMedicalRecord'])->name('editMedicalRecord');
     Route::get('/vitals', [DoctorController::class,'vitals']);
@@ -99,7 +99,7 @@ Route::middleware(['auth', 'role:nurse'])->group(function () {
     Route::get('/patientProfile', [NurseController::class, 'patientProfile'])->name('patientProfile');
     Route::post('/updatePatientProfile', [NurseController::class, 'updatePatientProfile'])->name('updatePatientProfile');
     Route::get('/getpatient', [NurseController::class, 'getpatient'])->name('getpatient');
-    
+
 
 
 

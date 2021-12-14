@@ -98,7 +98,7 @@
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="{{asset("storage/profilePhotos/".Auth::user()->profile_photo)}}" width='140' height='200' class="img-circle elevation-2">
+                    <img src="{{asset("storage/profilePhotos/".Auth::user()->profile_photo)}}" class="img-circle elevation-2">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">{{Auth::user()->name}}</a>
@@ -207,7 +207,7 @@
     <footer class="main-footer">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
-                <strong>Copyright &copy; 2021 <a>Microsoft</a></strong>
+                <strong>Copyright &copy; 2021 <a>mHealth</a></strong>
             </div>
         </div>
     </footer>

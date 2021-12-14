@@ -184,7 +184,7 @@
   <footer class="main-footer">
   <div class="container my-auto">
           <div class="copyright text-center my-auto">
-    <strong>Copyright &copy; 2021 <a>Microsoft</a></strong>
+    <strong>Copyright &copy; 2021 <a>mHealth</a></strong>
 </div>
 </div>
   </footer>

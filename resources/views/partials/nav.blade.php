@@ -5,14 +5,14 @@
                 <div class="row d-flex">
                     <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-phone2"></span></div>
-                        <span class="text">+2547 4018 2052</span>
+                        <span class="text">+2547 1111 1111</span>
                     </div>
                     {{-- <div class="col-md pr-4 d-flex topper align-items-center">
                         <div class="icon mr-2 d-flex justify-content-center align-items-center"><span class="icon-paper-plane"></span></div>
                         <span class="text">youremail@email.com</span>
                     </div> --}}
                     <div class="col-md-5 pr-4 d-flex topper align-items-center text-lg-right">
-                        <span class="text">info@microsoftteam3.com</span>
+                        <span class="text">info@mHealth.com</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-      <a class="navbar-brand" href="/">Microsoft Team 3</a>
+      <a class="navbar-brand" href="/">mHealth</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="oi oi-menu"></span> Menu
       </button>

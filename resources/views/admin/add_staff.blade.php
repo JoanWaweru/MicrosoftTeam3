@@ -1,8 +1,9 @@
 @extends('layouts.admin')
 @php
-    $name=$email=$role="";
+    $id=$name=$email=$role="";
     $user=Auth::user();
     if ($user!=null) {
+        $id = $user->id;
         $name = $user->name;
         $email = $user->email;
         $role = $user->role;
@@ -69,7 +70,7 @@
                             <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value={{ $user->role}} required autocomplete="role" autofocus>
+                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value={{ $user->role}} required autocomplete="role" autofocus>
 
                                 @error('role')
                                     <span class="invalid-feedback" role="alert">
