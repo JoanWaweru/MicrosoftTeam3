@@ -35,7 +35,7 @@ class TrainFace extends Controller
 
         $faceAPI = new FaceAPI();
         
-        $imageUrl= env('ngrokLink').'/FITA/public/storage/'.$path;  
+        $imageUrl= env('ngrokLink').'/MicrosoftTeam3/public/storage/'.$path;  
         //return $imageUrl;
         return $faceAPI->detectFace($imageUrl);
         }else{
@@ -102,7 +102,7 @@ class TrainFace extends Controller
             }
         }
         
-        $imageUrl= env('ngrokLink').'/FITA/public/storage/'.$path;
+        $imageUrl= env('ngrokLink').'/MicrosoftTeam3/public/storage/'.$path;
         
         $faceAPI = new FaceAPI();
         
@@ -225,7 +225,7 @@ class TrainFace extends Controller
         file_put_contents($file, $image_base64);
         $path= 'IdentifiedPhotos/'.$imageName;     
          
-        $imageUrl= env('ngrokLink').'/FITA/public/storage/'.$path;  
+        $imageUrl= env('ngrokLink').'/MicrosoftTeam3/public/storage/'.$path;  
         $faceAPI = new FaceAPI();
         
         

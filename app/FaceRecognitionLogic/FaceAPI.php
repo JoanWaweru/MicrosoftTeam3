@@ -15,7 +15,7 @@ class FaceAPI {
         'Content-Type' => 'application/json',
         'Ocp-Apim-Subscription-Key' => env('ocpApimSubscriptionKey') 
         ) ;
-        $this->uriBase ='https://fita.cognitiveservices.azure.com//face/v1.0/';
+        $this->uriBase ='https://faceapiteam3.cognitiveservices.azure.com//face/v1.0/';
     }
 
         /**
