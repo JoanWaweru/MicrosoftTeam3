@@ -29,7 +29,7 @@
                 <div class="row g-0">
                 <div class="col-lg-5">
                     <?php 
-
+                      //dd(asset("storage/profilePhotos/".Auth::user()->profile_photo));
                     ?>
                 <img src=" {{asset("storage/profilePhotos/".Auth::user()->profile_photo)}}" class="img-fluid" style="height: 500px"alt="error">
                 </div>

@@ -3,6 +3,7 @@
 //2. Taking a photo using the webcam
 
 //3. Use the profile Image
+alert("Ideally, before the nurse makes any change to patient's details, he/she has to scan the face of the patient.This is for security purpose. Create a new patient, train your face and come back to this page to get your face identified and retrieve your medical record");
 var uploadOption=1; 
 var imageUrl;
 // Set constraints for the video stream
